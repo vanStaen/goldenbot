@@ -1,4 +1,5 @@
 from decouple import config
+from postgreSQL.selectUser import selectAllUser
 import telebot
 
 API_KEY = config("API_KEY")
