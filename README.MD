@@ -4,9 +4,16 @@ Displayname: goldenbot <br/>
 Username: GoldenCircleBerlin_Bot <br/>
 https://telegram.me/GoldenCircleBerlin_Bot <br/>
 
-## Library
-run to install lib: `pip3 install pyTelegramBotAPI`
+## Libaries
+
+to install at one all packege listed in the requirements.txt file, run the following: ```pip3 install -r requirements.txt```
+
+### pytelegramBotAPI
+Install lib: `pip3 install pyTelegramBotAPI`
 doc: https://github.com/eternnoir/pyTelegramBotAPI
+
+### postgresQL client
+To install to postgreSQL driver "psycopg2" run: `pip3 install psycopg2-binary` and `pip3 install psycopg2`
 
 
 ## Tutos 
