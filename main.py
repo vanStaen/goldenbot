@@ -11,11 +11,14 @@ try:
 
     @bot.message_handler(commands=["help"])
     def send_welcome(message):
-        bot.reply_to(message, "Dude, how that thing is working?")
+        chat_id = message.chat.id
+        bot.send_message(chat_id, "/score -> to know your score")
+        bot.send_message(chat_id, "/help -> to get some help")
 
     @bot.message_handler(commands=["score"])
-    def insertMessage(message):
-        bot.send_message(message, "I don't know your score yet.")
+    def send_welcome(message):
+        chat_id = message.chat.id
+        bot.send_message(chat_id, "I don't know your score yet.")
 
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
