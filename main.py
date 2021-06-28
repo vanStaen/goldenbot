@@ -4,9 +4,18 @@ from postgreSQL.incrementScoreIndb import incrementScoreIndb
 from postgreSQL.getUserScoreFromdb import getUserScoreFromdb
 
 import telebot
+import requests
 
 API_KEY = config("API_KEY")
 bot = telebot.TeleBot(API_KEY, parse_mode=None)
+
+
+def get_random_kinkograph():
+    contents = requests.get("http://kinkograph.com/random").json()
+    url = contents["url"]
+    print(url)
+    return url
+
 
 try:
 
@@ -16,6 +25,7 @@ try:
         chat_id = message.chat.id
         bot.send_message(chat_id, "/score : get your score")
         bot.send_message(chat_id, "/rules : know the rules")
+        bot.send_message(chat_id, "/roulette : surprise picture")
         bot.send_message(chat_id, "/help : some help?")
 
     # Rules command
@@ -43,6 +53,13 @@ try:
 
         else:
             bot.send_message(chat_id, "Hello {name}! You don't have a score yet.")
+
+    # RandomPic command
+    @bot.message_handler(commands=["roulette"])
+    def send_welcome(message):
+        chat_id = message.chat.id
+        url = get_random_kinkograph()
+        bot.send_photo(chat_id=chat_id, photo=url)
 
     # The bot is listening
     @bot.message_handler(func=lambda message: True)
