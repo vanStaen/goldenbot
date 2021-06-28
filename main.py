@@ -25,8 +25,8 @@ try:
         chat_id = message.chat.id
         bot.send_message(chat_id, "/score : get your score")
         bot.send_message(chat_id, "/rules : know the rules")
-        bot.send_message(chat_id, "/roulette : surprise picture")
-        bot.send_message(chat_id, "/help : some help?")
+        bot.send_message(chat_id, "/roulette : surprise me!")
+        bot.send_message(chat_id, "/help : need some help?")
 
     # Rules command
     @bot.message_handler(commands=["rules"])
