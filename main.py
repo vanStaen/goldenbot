@@ -1,5 +1,7 @@
 from decouple import config
 from postgreSQL.selectUser import selectAllUser
+from postgreSQL.insertMessage import insertMessage
+from postgreSQL.incrementScore import incrementScore
 import telebot
 
 API_KEY = config("API_KEY")
@@ -11,18 +13,20 @@ try:
     def send_welcome(message):
         bot.reply_to(message, "Dude, how that thing is working?")
 
-
     @bot.message_handler(commands=["score"])
-    def send_welcome(message):
-        bot.reply_to(message, "I don't know your score yet.")
-
+    def insertMessage(message):
+        bot.send_message(message, "I don't know your score yet.")
 
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
+        author = message.from_user
+        insertMessage(message.text, author)
+        # incrementScore(author)
         bot.reply_to(message, "You wrote:" + message.text)
 
+
 except telebot.apihelper.ApiException as e:
-  if e.result.status_code == 403 or e.result.status_code == 400:
-   pass 
+    if e.result.status_code == 403 or e.result.status_code == 400:
+        pass
 
 bot.polling()
