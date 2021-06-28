@@ -15,7 +15,7 @@ def incrementScoreIndb(author):
         user_score = cursor.fetchone()
 
         if user_score:
-            print(f"> Increment score for user #id {author.id}")
+            print(f"> Increment score for {author.first_name}")
             print(f"Old score: {user_score[0]}")
             user_score_incremented = user_score[0] + 1
             postgreSQL_update_Query = "UPDATE users SET score=%s WHERE telegram_id='%s'"
