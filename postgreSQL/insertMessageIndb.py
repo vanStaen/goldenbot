@@ -3,7 +3,7 @@ from datetime import date
 from postgreSQL.configdb import configdb
 
 
-def insertMessage(message, author):
+def insertMessageIndb(message, author):
 
     try:
         params = configdb(section="heroku")

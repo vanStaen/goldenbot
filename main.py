@@ -1,7 +1,7 @@
 from decouple import config
-from postgreSQL.selectUser import selectAllUser
-from postgreSQL.insertMessage import insertMessage
-from postgreSQL.incrementScore import incrementScore
+from postgreSQL.insertMessageIndb import insertMessageIndb
+from postgreSQL.incrementScoreIndb import incrementScoreIndb
+
 import telebot
 
 API_KEY = config("API_KEY")
@@ -20,8 +20,8 @@ try:
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
         author = message.from_user
-        insertMessage(message.text, author)
-        # incrementScore(author)
+        insertMessageIndb(message.text, author)
+        incrementScoreIndb(author)
         bot.reply_to(message, "You wrote:" + message.text)
 
 
