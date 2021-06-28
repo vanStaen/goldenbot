@@ -15,6 +15,10 @@ doc: https://github.com/eternnoir/pyTelegramBotAPI
 ### postgresQL client
 To install to postgreSQL driver "psycopg2" run: `pip3 install psycopg2-binary`
 
+### Telegram API
+Documentation of the Telegram API :  https://core.telegram.org/bots/api#message
+Please be aware that some difference exist when using python. 
+
 
 ## Tutos 
 https://www.freecodecamp.org/news/learn-to-build-your-first-bot-in-telegram-with-python-4c99526765e4/
