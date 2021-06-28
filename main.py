@@ -39,7 +39,7 @@ try:
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
         author = message.from_user
-        insertMessageIndb(message.text, author)
+        # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
         bot.reply_to(message, "You wrote:" + message.text)
 
