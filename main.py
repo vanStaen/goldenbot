@@ -14,8 +14,17 @@ try:
     @bot.message_handler(commands=["help"])
     def send_welcome(message):
         chat_id = message.chat.id
-        bot.send_message(chat_id, "/score -> to know your score")
-        bot.send_message(chat_id, "/help -> to get some help")
+        bot.send_message(chat_id, "/score : get your score")
+        bot.send_message(chat_id, "/rules : know the rules")
+        bot.send_message(chat_id, "/help : some help?")
+
+    # Rules command
+    @bot.message_handler(commands=["rules"])
+    def send_welcome(message):
+        chat_id = message.chat.id
+        bot.send_message(
+            chat_id, "I forgot the rules, but soon they will be listed here."
+        )
 
     # Score command
     @bot.message_handler(commands=["score"])
@@ -41,7 +50,7 @@ try:
         author = message.from_user
         # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
-        bot.reply_to(message, "You wrote:" + message.text)
+        # bot.reply_to(message, "You wrote:" + message.text)
 
 
 except telebot.apihelper.ApiException as e:
