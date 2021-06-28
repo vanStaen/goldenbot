@@ -10,12 +10,12 @@ def incrementScoreIndb(author):
         connection = psycopg2.connect(**params)
 
         cursor = connection.cursor()
-        postgreSQL_select_Query = "select username from users WHERE telegram_id='%s'"
+        postgreSQL_select_Query = "select score from users WHERE telegram_id='%s'"
         cursor.execute(postgreSQL_select_Query, (author.id,))
-        user_data = cursor.fetchone()
+        user_score = cursor.fetchone()
 
-        if user_data:
-            print(user_data)
+        if user_score:
+            updateScoreforUserIndb(author.id, user_score)
         else:
             print("No user found, add to db")
             insertNewUserIndb(author)

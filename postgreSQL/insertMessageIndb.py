@@ -15,8 +15,6 @@ def insertMessageIndb(message, author):
             "INSERT INTO public.messages(message, author, date) VALUES(%s, %s, %s);"
         )
 
-        print(author)
-
         cursor.execute(postgreSQL_insert_Query, (message, author.first_name, now))
         connection.commit()
 

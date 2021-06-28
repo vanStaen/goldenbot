@@ -11,7 +11,8 @@ def insertNewUserIndb(author):
 
         cursor = connection.cursor()
         initial_score = 5
-        postgreSQL_insert_Query = "INSERT INTO users(username, score, first_name, last_name, telegram_id) VALUES(%s, %s, %s, %s, %s);"
+        now = date.today()
+        postgreSQL_insert_Query = "INSERT INTO users(username, score, first_name, last_name, telegram_id, last_seen) VALUES(%s, %s, %s, %s, %s, %s);"
 
         print(f"User '{author.username}' added to db")
 
@@ -23,6 +24,7 @@ def insertNewUserIndb(author):
                 author.first_name,
                 author.last_name,
                 author.id,
+                now,
             ),
         )
         connection.commit()
