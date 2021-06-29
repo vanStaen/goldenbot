@@ -73,7 +73,7 @@ try:
                 message,
                 "You wrote '"
                 + message.text
-                + "', but <b>I don't now what it means</b>. I am just a stupid robot 🤖, DUH!",
+                + "', but <b><u>I don't now what it means</u></b>. I am just a stupid robot 🤖, DUH!",
                 parse_mode="HTML",
             )
 
