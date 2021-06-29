@@ -71,9 +71,9 @@ try:
         else:
             bot.reply_to(
                 message,
-                "You wrote:"
+                "You wrote: "
                 + message.text
-                + ", but I don't now what this means. I am just a stupid robot.",
+                + ", but I don't now what it means. I am just a stupid robot, DUH!",
             )
 
 

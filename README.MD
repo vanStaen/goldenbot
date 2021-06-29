@@ -22,10 +22,18 @@ Please be aware that some difference exist when using python.
 ## Deployement
 
 As usual, Heroku deploy via `git push heroku master`.
-The ProcFile include `web: python3 main.py`, thus the script will run on heroku's side. 
+
+### Procfile
+The ProcFile include `worker: python3 main.py`, thus the script will run on heroku's side. 
+
+Why `worker` isntead of `Web`: because our script doesn't specify a specific PORT, thus with web, the following error pops up (and the script crash after 60 sec:
+
+```
+Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch
+```
 
 ### Logs on heroku
-`heroku logs`
+To see heroku's logs: `heroku logs`
 
 
 ## Tutos 
