@@ -74,6 +74,8 @@ try:
         author = message.from_user
         # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
+        if message.text == "test":
+            bot.reply_to(message, "Your test was successfull! Get a cookie.")
         # bot.reply_to(message, "You wrote:" + message.text)
 
 
