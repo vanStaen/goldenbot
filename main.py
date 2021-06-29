@@ -15,6 +15,12 @@ try:
     @bot.message_handler(commands=["start"])
     def send_welcome(message):
         chat_id = message.chat.id
+        author = message.from_user
+        if author.first_name:
+            name = author.first_name
+        else:
+            name = author.first_username
+        bot.send_message(chat_id, f"Welcome {name}!")
         bot.send_message(chat_id, "/score : get your score")
         bot.send_message(chat_id, "/rules : know the rules")
         bot.send_message(chat_id, "/help : need some help?")
