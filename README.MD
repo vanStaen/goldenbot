@@ -19,6 +19,14 @@ To install to postgreSQL driver "psycopg2" run: `pip3 install psycopg2-binary`
 Documentation of the Telegram API :  https://core.telegram.org/bots/api#message
 Please be aware that some difference exist when using python. 
 
+## Deployement
+
+As usual, Heroku deploy via `git push heroku master`.
+The ProcFile include `web: python3 main.py`, thus the script will run on heroku's side. 
+
+### Logs on heroku
+`heroku logs`
+
 
 ## Tutos 
 https://www.freecodecamp.org/news/learn-to-build-your-first-bot-in-telegram-with-python-4c99526765e4/

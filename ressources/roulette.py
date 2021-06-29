@@ -1,5 +1,7 @@
 import requests
 
+# Think about 'pip3 install request', and put it into requirements.txt
+
 
 def get_random_kinkograph():
     contents = requests.get("http://kinkograph.com/random").json()
