@@ -19,13 +19,20 @@ def get_random_kinkograph():
 
 try:
 
+    # Start command
+    @bot.message_handler(commands=["Start"])
+    def send_welcome(message):
+        chat_id = message.chat.id
+        bot.send_message(chat_id, "/score : get your score")
+        bot.send_message(chat_id, "/rules : know the rules")
+        bot.send_message(chat_id, "/help : need some help?")
+
     # Help command
     @bot.message_handler(commands=["help"])
     def send_welcome(message):
         chat_id = message.chat.id
         bot.send_message(chat_id, "/score : get your score")
         bot.send_message(chat_id, "/rules : know the rules")
-        bot.send_message(chat_id, "/roulette : surprise me!")
         bot.send_message(chat_id, "/help : need some help?")
 
     # Rules command
@@ -55,11 +62,11 @@ try:
             bot.send_message(chat_id, "Hello {name}! You don't have a score yet.")
 
     # RandomPic command
-    @bot.message_handler(commands=["roulette"])
-    def send_welcome(message):
-        chat_id = message.chat.id
-        url = get_random_kinkograph()
-        bot.send_photo(chat_id=chat_id, photo=url)
+    # @bot.message_handler(commands=["roulette"])
+    # def send_welcome(message):
+    #    chat_id = message.chat.id
+    #    url = get_random_kinkograph()
+    #    bot.send_photo(chat_id=chat_id, photo=url)
 
     # The bot is listening
     @bot.message_handler(func=lambda message: True)
