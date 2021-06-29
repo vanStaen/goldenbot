@@ -67,13 +67,13 @@ try:
         # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
         if message.text == "test" or message.text == "Test":
-            bot.send_message(chat_id, "Your test was successfull! Get a cookie.")
+            bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
         else:
             bot.reply_to(
                 message,
-                "You wrote: "
+                "You wrote '"
                 + message.text
-                + ", but I don't now what it means. I am just a stupid robot, DUH!",
+                + "', but I don't now what it means. I am just a stupid robot 🤖, DUH!",
             )
 
 
