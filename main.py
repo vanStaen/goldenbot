@@ -21,17 +21,17 @@ try:
         else:
             name = author.first_username
         bot.send_message(chat_id, f"Welcome {name}!")
-        bot.send_message(chat_id, "/score : get your score")
-        bot.send_message(chat_id, "/rules : know the rules")
-        bot.send_message(chat_id, "/help : need some help?")
+        bot.send_message(chat_id, "/score : to get your score")
+        bot.send_message(chat_id, "/rules : to learn the rules")
+        bot.send_message(chat_id, "/help : you need some help?")
 
     # Help command
     @bot.message_handler(commands=["help"])
     def send_welcome(message):
         chat_id = message.chat.id
-        bot.send_message(chat_id, "/score : get your score")
-        bot.send_message(chat_id, "/rules : know the rules")
-        bot.send_message(chat_id, "/help : need some help?")
+        bot.send_message(chat_id, "/score : to get your score")
+        bot.send_message(chat_id, "/rules : to learn the rules")
+        bot.send_message(chat_id, "/help : you need some help?")
 
     # Rules command
     @bot.message_handler(commands=["rules"])

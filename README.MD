@@ -24,7 +24,7 @@ Please be aware that some difference exist when using python.
 As usual, Heroku deploy via `git push heroku master`.
 
 ### Procfile
-The ProcFile include `worker: python3 main.py`, thus the script will run on heroku's side. 
+The ProcFile include `worker: python3 main.py`, and run `heroku scale worker=1` to set and run the worker's dyno on heroku side.
 
 Why `worker` isntead of `Web`: because our script doesn't specify a specific PORT, thus with web, the following error pops up (and the script crash after 60 sec:
 
