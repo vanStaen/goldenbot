@@ -4,17 +4,9 @@ from postgreSQL.incrementScoreIndb import incrementScoreIndb
 from postgreSQL.getUserScoreFromdb import getUserScoreFromdb
 
 import telebot
-import requests
 
 API_KEY = config("API_KEY")
 bot = telebot.TeleBot(API_KEY, parse_mode=None)
-
-
-def get_random_kinkograph():
-    contents = requests.get("http://kinkograph.com/random").json()
-    url = contents["url"]
-    print(url)
-    return url
 
 
 try:
@@ -61,21 +53,15 @@ try:
         else:
             bot.send_message(chat_id, "Hello {name}! You don't have a score yet.")
 
-    # RandomPic command
-    # @bot.message_handler(commands=["roulette"])
-    # def send_welcome(message):
-    #    chat_id = message.chat.id
-    #    url = get_random_kinkograph()
-    #    bot.send_photo(chat_id=chat_id, photo=url)
-
     # The bot is listening
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
+        chat_id = message.chat.id
         author = message.from_user
         # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
-        if message.text == "test":
-            bot.reply_to(message, "Your test was successfull! Get a cookie.")
+        if message.text == "test" or message.text == "Test":
+            bot.send_message(chat_id, "Your test was successfull! Get a cookie.")
         # bot.reply_to(message, "You wrote:" + message.text)
 
 
@@ -84,3 +70,19 @@ except telebot.apihelper.ApiException as e:
         pass
 
 bot.polling()
+
+
+# import requests
+#
+# def get_random_kinkograph():
+#    contents = requests.get("http://kinkograph.com/random").json()
+#    url = contents["url"]
+#    print(url)
+#    return url
+
+# RandomPic command
+# @bot.message_handler(commands=["roulette"])
+# def send_welcome(message):
+#    chat_id = message.chat.id
+#    url = get_random_kinkograph()
+#    bot.send_photo(chat_id=chat_id, photo=url)
