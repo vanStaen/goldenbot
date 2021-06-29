@@ -73,7 +73,7 @@ try:
                 message,
                 "You wrote '"
                 + message.text
-                + "', but I don't now what it means. I am just a stupid robot 🤖, DUH!",
+                + "', but **I don't now what it means**. I am just a stupid robot 🤖, DUH!",
             )
 
 
