@@ -68,7 +68,13 @@ try:
         incrementScoreIndb(author)
         if message.text == "test" or message.text == "Test":
             bot.send_message(chat_id, "Your test was successfull! Get a cookie.")
-        # bot.reply_to(message, "You wrote:" + message.text)
+        else:
+            bot.reply_to(
+                message,
+                "You wrote:"
+                + message.text
+                + ", but I don't now what this means. I am just a stupid robot.",
+            )
 
 
 except telebot.apihelper.ApiException as e:
