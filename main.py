@@ -74,6 +74,7 @@ try:
                 "You wrote '"
                 + message.text
                 + "', but <b>I don't now what it means</b>. I am just a stupid robot 🤖, DUH!",
+                parse_mode="HTML",
             )
 
 
