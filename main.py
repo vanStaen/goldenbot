@@ -20,7 +20,7 @@ def get_random_kinkograph():
 try:
 
     # Start command
-    @bot.message_handler(commands=["Start"])
+    @bot.message_handler(commands=["start"])
     def send_welcome(message):
         chat_id = message.chat.id
         bot.send_message(chat_id, "/score : get your score")
