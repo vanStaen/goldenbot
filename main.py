@@ -64,14 +64,14 @@ try:
     # The bot is listening to channels #
     ####################################
     @bot.channel_post_handler(func=lambda message: True)
-    def echo_all(message):
+    def handle_messages_in_channel(message):
         customPrint(message)
 
     ######################################################
     # The bot is listening to messages (direct or group) #
     ######################################################
     @bot.message_handler(func=lambda message: True)
-    def echo_all(message):
+    def handle_messages(message):
         chat_id = message.chat.id
         author = message.from_user
         chat_type = message.chat.type
@@ -87,6 +87,21 @@ try:
                 )
         # Track the messages sent
         insertMessageIndb(message.text, author)
+        # Increment score of user
+        # incrementScoreIndb(author)
+
+    ####################################################
+    # The bot is listening for files (direct or group) #
+    ####################################################
+    @bot.message_handler(content_types=["document", "audio"])
+    def handle_docs_audio(message):
+        chat_id = message.chat.id
+        author = message.from_user
+        chat_type = message.chat.type
+        customPrint(f"{author.username} send a file to a {chat_type} chat")
+        # Track the file sent
+        # insertMessageIndb(message.text, author)
+        customPrint(message)
         # Increment score of user
         # incrementScoreIndb(author)
 
