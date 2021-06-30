@@ -2,6 +2,7 @@ from decouple import config
 from postgreSQL.insertMessageIndb import insertMessageIndb
 from postgreSQL.incrementScoreIndb import incrementScoreIndb
 from postgreSQL.getUserScoreFromdb import getUserScoreFromdb
+from helpers.customPrint import customPrint
 
 import telebot
 
@@ -59,11 +60,35 @@ try:
         else:
             bot.send_message(chat_id, "Hello {name}! You don't have a score yet.")
 
-    # The bot is listening
+    # The bot is listening to chanels
+    @bot.channel_post_handler(func=lambda message: True)
+    def echo_all(message):
+        chat_id = message.chat.id
+        if message.from_user:
+            # Group messages does not show an author
+            author = message.from_user
+        else:
+            # Chanels messages does not show an author
+            author = "Anonyme"
+
+        if message.text == "test" or message.text == "Test":
+            bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
+        else:
+            bot.reply_to(
+                message,
+                f"{author} wrote '"
+                + message.text
+                + "', but <b><u>I don't now what it means</u></b>. I am just a stupid robot 🤖, DUH!",
+                parse_mode="HTML",
+            )
+
+    # The bot is listening to messages
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
         chat_id = message.chat.id
         author = message.from_user
+
+        customPrint(message.chat.type)
         # insertMessageIndb(message.text, author)
         incrementScoreIndb(author)
         if message.text == "test" or message.text == "Test":
