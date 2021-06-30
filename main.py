@@ -60,7 +60,9 @@ try:
         else:
             bot.send_message(chat_id, "Hello {name}! You don't have a score yet.")
 
-    # The bot is listening to chanels
+    ####################################
+    # The bot is listening to channels #
+    ####################################
     @bot.channel_post_handler(func=lambda message: True)
     def echo_all(message):
         chat_id = message.chat.id
@@ -69,20 +71,17 @@ try:
             author = message.from_user
         else:
             # Chanels messages does not show an author
-            author = "Anonyme"
+            author = "Anonym"
 
-        if message.text == "test" or message.text == "Test":
-            bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
-        else:
-            bot.reply_to(
-                message,
-                f"{author} wrote '"
-                + message.text
-                + "', but <b><u>I don't now what it means</u></b>. I am just a stupid robot 🤖, DUH!",
-                parse_mode="HTML",
-            )
+        bot.reply_to(
+            message,
+            f"new message in channel from {author}",
+            parse_mode="HTML",
+        )
 
-    # The bot is listening to messages
+    ######################################################
+    # The bot is listening to messages (direct or group) #
+    ######################################################
     @bot.message_handler(func=lambda message: True)
     def echo_all(message):
         chat_id = message.chat.id
@@ -96,9 +95,7 @@ try:
         else:
             bot.reply_to(
                 message,
-                "You wrote '"
-                + message.text
-                + "', but <b><u>I don't now what it means</u></b>. I am just a stupid robot 🤖, DUH!",
+                "<b>I don't now what it means</b>. I am just a robot 🤖!",
                 parse_mode="HTML",
             )
 
@@ -107,4 +104,4 @@ except telebot.apihelper.ApiException as e:
     if e.result.status_code == 403 or e.result.status_code == 400:
         pass
 
-bot.polling()
+bot.polling(none_stop=True)
