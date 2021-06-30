@@ -24,10 +24,10 @@ def incrementScoreIndb(author):
                 (user_score_incremented, author.id),
             )
             connection.commit()
-            print(f"New score: {user_score_incremented}")
+            # print(f"New score: {user_score_incremented}")
         else:
             insertNewUserIndb(author)
-            # print("> New user, will be added to the user db")
+            print("> New user, will be added to the user db")
 
     except (Exception, psycopg2.Error) as error:
         print("Error while incrementing score in database: ", error)

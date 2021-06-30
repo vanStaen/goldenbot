@@ -65,19 +65,7 @@ try:
     ####################################
     @bot.channel_post_handler(func=lambda message: True)
     def echo_all(message):
-        chat_id = message.chat.id
-        if message.from_user:
-            # Group messages does not show an author
-            author = message.from_user
-        else:
-            # Chanels messages does not show an author
-            author = "Anonym"
-
-        bot.reply_to(
-            message,
-            f"new message in channel from {author}",
-            parse_mode="HTML",
-        )
+        customPrint(message)
 
     ######################################################
     # The bot is listening to messages (direct or group) #
@@ -86,18 +74,21 @@ try:
     def echo_all(message):
         chat_id = message.chat.id
         author = message.from_user
-
-        customPrint(message.chat.type)
-        # insertMessageIndb(message.text, author)
-        incrementScoreIndb(author)
-        if message.text == "test" or message.text == "Test":
-            bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
-        else:
-            bot.reply_to(
-                message,
-                "<b>I don't now what it means</b>. I am just a robot 🤖!",
-                parse_mode="HTML",
-            )
+        chat_type = message.chat.type
+        customPrint(f"{author.username} wrote in a {chat_type} chat")
+        if chat_type == "private":
+            if message.text == "test" or message.text == "Test":
+                bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
+            else:
+                bot.reply_to(
+                    message,
+                    "<b>I don't now what it means</b>. I am just a robot 🤖!",
+                    parse_mode="HTML",
+                )
+        # Track the messages sent
+        insertMessageIndb(message.text, author)
+        # Increment score of user
+        # incrementScoreIndb(author)
 
 
 except telebot.apihelper.ApiException as e:
