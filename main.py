@@ -102,7 +102,7 @@ try:
         # Track the messages sent
         insertMessageIndb(message.text, author)
         # Increment score of user
-        # incrementScoreIndb(author)
+        incrementScoreIndb(author)
 
 
 except telebot.apihelper.ApiException as e:
