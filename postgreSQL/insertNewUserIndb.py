@@ -3,28 +3,28 @@ from datetime import date
 from postgreSQL.configdb import configdb
 
 
-def insertNewUserIndb(author):
+def insertNewUserIndb(author, message):
 
     try:
         params = configdb(section="heroku")
         connection = psycopg2.connect(**params)
 
         cursor = connection.cursor()
-        initial_score = 5
         now = date.today()
-        postgreSQL_insert_Query = "INSERT INTO users(username, score, first_name, last_name, telegram_id, last_seen) VALUES(%s, %s, %s, %s, %s, %s);"
+        postgreSQL_insert_Query = "INSERT INTO users(username, activity, first_name, last_name, telegram_id, last_seen_date, last_seen_on) VALUES(%s, %s, %s, %s, %s, %s, %s);"
 
-        print(f"User '{author.username}' added to db")
+        print(f"> User '{author.username}' added to db")
 
         cursor.execute(
             postgreSQL_insert_Query,
             (
                 author.username,
-                initial_score,
+                0,
                 author.first_name,
                 author.last_name,
                 author.id,
                 now,
+                message.chat.title,
             ),
         )
         connection.commit()

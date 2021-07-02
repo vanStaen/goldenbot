@@ -3,7 +3,7 @@ from datetime import date
 from postgreSQL.configdb import configdb
 
 
-def insertMessageIndb(message, author):
+def insertMessageIndb(author, message):
 
     try:
         params = configdb(section="heroku")
@@ -11,11 +11,12 @@ def insertMessageIndb(message, author):
 
         cursor = connection.cursor()
         now = date.today()
-        postgreSQL_insert_Query = (
-            "INSERT INTO public.messages(message, author, date) VALUES(%s, %s, %s);"
-        )
+        postgreSQL_insert_Query = "INSERT INTO public.messages(message, author, date, chat) VALUES(%s, %s, %s, %s);"
 
-        cursor.execute(postgreSQL_insert_Query, (message, author.first_name, now))
+        cursor.execute(
+            postgreSQL_insert_Query,
+            (message.text, author.first_name, now, message.chat.title),
+        )
         connection.commit()
 
     except (Exception, psycopg2.Error) as error:
