@@ -19,7 +19,7 @@ def insertNewUserIndb(author, message):
             postgreSQL_insert_Query,
             (
                 author.username,
-                0,
+                1,
                 author.first_name,
                 author.last_name,
                 author.id,

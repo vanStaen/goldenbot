@@ -17,7 +17,7 @@ def updateUserIndb(author, message):
 
         if user:
             print(f"> Update user tracking for {author.first_name}")
-            user_activity_incremented = user[0].activity + 1
+            user_activity_incremented = user[0] + 1
             now = date.today()
             postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s WHERE telegram_id='%s'"
             cursor.execute(
@@ -26,7 +26,10 @@ def updateUserIndb(author, message):
             )
             connection.commit()
 
-        ### TODO: if name changes update those
+            ### TODO: if name changes update those
+            username = user[1]
+            first_name = user[2]
+            last_name = user[3]
 
         else:
             insertNewUserIndb(author, message)
