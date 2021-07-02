@@ -32,6 +32,11 @@ Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 second
 ### Logs on heroku
 To see heroku's logs: `heroku logs`
 
+### Managing worker on Heroku
+List all script runnin `heroku ps`
+To stop the worker : `heroku ps:stop [NAME]`
+To start the worker : `heroku ps:ps:restart [NAME]`
+
 
 ## Tutos 
 https://www.freecodecamp.org/news/learn-to-build-your-first-bot-in-telegram-with-python-4c99526765e4/
