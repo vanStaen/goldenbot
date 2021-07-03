@@ -13,9 +13,14 @@ def insertMessageIndb(author, message):
         now = date.today()
         postgreSQL_insert_Query = "INSERT INTO public.messages(message, author, date, chat) VALUES(%s, %s, %s, %s);"
 
+        if message.chat.type == "private":
+            title = "PrivateChat"
+        else:
+            title = message.chat.title
+
         cursor.execute(
             postgreSQL_insert_Query,
-            (message.text, author.first_name, now, message.chat.title),
+            (message.text, author.first_name, now, title),
         )
         connection.commit()
 
