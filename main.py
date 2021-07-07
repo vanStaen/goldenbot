@@ -1,6 +1,7 @@
 from decouple import config
 from postgreSQL.insertMessageIndb import insertMessageIndb
 from postgreSQL.updateUserIndb import updateUserIndb
+from postgreSQL.insertNewUserIndb import insertNewUserIndb
 from helpers.customPrint import customPrint
 
 import telebot
@@ -69,8 +70,11 @@ try:
         chat_id = message.chat.id
         author = message.from_user
         chat_type = message.chat.type
-        # customPrint(message)
-        # customPrint(f"{author.username} wrote in a {chat_type} chat")
+        new_chat_members = message.new_chat_members
+        if len(new_chat_members) > 0:
+            for new_chat_member in new_chat_members:
+                customPrint(f"new user added to group: {new_chat_member}")
+                insertNewUserIndb(new_chat_member, None, True)
         if chat_type == "private":
             if message.text == "test" or message.text == "Test":
                 bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
@@ -80,6 +84,8 @@ try:
                     "<b>I don't now what it means</b>. I am just a robot 🤖!",
                     parse_mode="HTML",
                 )
+        customPrint("ChatMembers:")
+        customPrint(bot.get_chat_member)
         # Track the message sent
         insertMessageIndb(author, message)
         # update User in db

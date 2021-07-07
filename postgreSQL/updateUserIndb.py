@@ -32,7 +32,7 @@ def updateUserIndb(author, message):
             last_name = user[3]
 
         else:
-            insertNewUserIndb(author, message)
+            insertNewUserIndb(author, message, False)
 
     except (Exception, psycopg2.Error) as error:
         print("Error while udpating user in database: ", error)
