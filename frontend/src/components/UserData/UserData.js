@@ -1,28 +1,48 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { getUserData } from "../../Calls/getUserData";
+import { Tooltip } from "antd";
+
+import "./UserData.css";
 
 export const UserData = () => {
-    const [userData, setUserData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const fetchUserData = async () => {
-        try {
-            const fetchedData =  await getUserData();
-            setUserData(fetchedData);
-            console.log(fetchedData)
-        } catch (err) {
-            console.log(err);
-        }
-        setIsLoading(false);
-    } 
+  const fetchUserData = async () => {
+    try {
+      const fetchedData = await getUserData();
+      setUserData(fetchedData);
+    } catch (err) {
+      console.log(err);
+    }
+    setIsLoading(false);
+  };
 
-    useEffect(() => {
-        fetchUserData();
-    }, [])
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-    const userDataFormated = userData.map((user) => {
-        return <div><b>{user.first_name}</b>, score: <b>{user.activity}</b>, last seen : {user.last_seen_date}</div>
-    })
+  return isLoading ? (
+    <div>Loading</div>
+  ) : (
+    <div className="ListUserData">
+      <ol>{userData.map((user) => {
+    return (
+      <li>
+        <b>{user.first_name}</b> {" "}
+        <span className="SmallFont">
+          ({user.activity})
+          last seen : {user.last_seen_date}
+        </span>
+      </li>
+    );
+  })}</ol>
+    </div>
+  );
+};
 
-        return isLoading ? <div>Loading</div> : <div>{userDataFormated}</div>
-}
+/*
+<Tooltip title="How many messages this user wrote since we started tracking">
+    ({user.activity})
+</Tooltip>
+*/
