@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { Input } from "antd";
 
+import "./Login.css";
+
 export const Login = (props) => {
   const [codeFromInput, setCodeFromInput] = useState(undefined);
 
@@ -26,11 +28,20 @@ export const Login = (props) => {
   }, [keyDownListener]);
 
   return (
-    <Input.Password
-      id="code"
+    <input
+      className="LoginFont"
+      name="pwd"
+      value="test"
       onChange={handlerInputChange}
-      placeholder="input code & confirm with enter"
-      className="PinInput__mobileInput"
     />
   );
 };
+
+/*
+<Input.Password
+  id="code"
+  onChange={handlerInputChange}
+  placeholder="input code & confirm with enter"
+  className="PinInput__mobileInput"
+/>
+*/

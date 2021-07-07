@@ -11,7 +11,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
       <span className="App-Title">⚜️ Golden Circle ⚜️</span>      
-          {hasAccess ? <UserData/> : <Login/>}
+          {hasAccess ? <UserData/> : <Login setHasAccess={setHasAccess}/>}
       </header>
     </div>
   );
