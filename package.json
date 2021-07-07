@@ -11,7 +11,7 @@
     "version": "heroku --version; git --version",
     "log": "heroku logs --tail",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
-    "deploy": "npm i; npm run buildfe; heroku git:remote -a routine-cvs; git push heroku master",
+    "deploy": "npm i; npm run buildfe; heroku git:remote -a goldenbot-cvs; git push heroku master; heroku open",
     "killAll": "killall -9 node"
   },
   "repository": {
