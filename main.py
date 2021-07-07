@@ -37,8 +37,7 @@ try:
     def send_welcome(message):
         chat_id = message.chat.id
         bot.send_message(
-            chat_id, "I forgot the rules, but soon they will be listed here."
-        )
+            chat_id, "I forgot the rules, but soon they will be listed here.")
 
     ####################################
     # The bot is listening to channels #
@@ -70,10 +69,11 @@ try:
         chat_id = message.chat.id
         author = message.from_user
         chat_type = message.chat.type
-        
+
         if chat_type == "private":
             if message.text == "test" or message.text == "Test":
-                bot.send_message(chat_id, "Your test was successfull! Get a cookie 🍪.")
+                bot.send_message(chat_id,
+                                 "Your test was successfull! Get a cookie 🍪.")
             else:
                 bot.reply_to(
                     message,
@@ -86,11 +86,12 @@ try:
         updateUserIndb(author, message)
         # Check if there is new members in the chat
         new_chat_members = message.new_chat_members
+        customPrint(f"new_chat_members")
+        customPrint(f"{new_chat_members}")
         if new_chat_members:
             for new_chat_member in new_chat_members:
                 customPrint(f"new user added to group: {new_chat_member}")
                 insertNewUserIndb(new_chat_member, None, True)
-
 
 except telebot.apihelper.ApiException as e:
     if e.result.status_code == 403 or e.result.status_code == 400:
