@@ -12,7 +12,7 @@ def updateUserIndb(author, message):
 
         cursor = connection.cursor()
         postgreSQL_select_Query = "select activity, username, first_name, last_name from users WHERE telegram_id='%s'"
-        cursor.execute(postgreSQL_select_Query, (author.id,))
+        cursor.execute(postgreSQL_select_Query, (author.id, ))
         user = cursor.fetchone()
 
         if user:
@@ -22,7 +22,8 @@ def updateUserIndb(author, message):
             postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s WHERE telegram_id='%s'"
             cursor.execute(
                 postgreSQL_update_Query,
-                (user_activity_incremented, now, message.chat.title, author.id),
+                (user_activity_incremented, now, message.chat.title,
+                 author.id),
             )
             connection.commit()
 
@@ -30,15 +31,24 @@ def updateUserIndb(author, message):
             username = user[1]
             first_name = user[2]
             last_name = user[3]
-            if username != author.username :
+            if username != author.username:
                 postgreSQL_update_username_Query = "UPDATE users SET username=%s WHERE telegram_id='%s'"
-                cursor.execute( postgreSQL_update_username_Query, (username, author.id,))
-            if first_name != author.first_name :
+                cursor.execute(postgreSQL_update_username_Query, (
+                    username,
+                    author.id,
+                ))
+            if first_name != author.first_name:
                 postgreSQL_update_first_name_Query = "UPDATE users SET first_name=%s WHERE telegram_id='%s'"
-                cursor.execute( postgreSQL_update_first_name_Query, (first_name, author.id,))
-            if last_name != author.last_name :
+                cursor.execute(postgreSQL_update_first_name_Query, (
+                    first_name,
+                    author.id,
+                ))
+            if last_name != author.last_name:
                 postgreSQL_update_last_name_Query = "UPDATE users SET last_name=%s WHERE telegram_id='%s'"
-                cursor.execute( postgreSQL_update_last_name_Query, (last_name, author.id,))
+                cursor.execute(postgreSQL_update_last_name_Query, (
+                    last_name,
+                    author.id,
+                ))
 
         else:
             insertNewUserIndb(author, message, False)
