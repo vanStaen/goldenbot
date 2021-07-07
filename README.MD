@@ -1,8 +1,9 @@
 # GOLDENBOT
-
 Displayname: goldenbot <br/>
 Username: GoldenCircleBerlin_Bot <br/>
 https://telegram.me/GoldenCircleBerlin_Bot <br/>
+
+The frontend can be accessed at: https://goldenbot-cvs.herokuapp.com/
 
 ## Create/Setup Bot
 Use the Telegram @BotFather to create a new bot. You'll get a Token. 
@@ -24,8 +25,10 @@ Please be aware that some difference exist when using python.
 As usual, Heroku deploy via `git push heroku master`.
 
 ### Procfile
-The ProcFile include `worker: python3 main.py`, and run `heroku scale worker=1` to set and run the worker's dyno on heroku side.
-Why `worker` isntead of `Web`: because our script doesn't specify a specific PORT, thus with web, the following error pops up (and the script crash after 60 sec:
+The ProcFile include `worker: python3 main.py`, and run `heroku scale worker=1` to set and run the worker's dyno on heroku side. 
+A normal Web worker is also present for the node part of the project `web npm start`.
+
+Why `worker` instead of `Web` (for the python script): because our script doesn't specify a specific PORT, thus with web, the following error pops up (and the script crash after 60 sec:
 ```
 Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch
 ```
