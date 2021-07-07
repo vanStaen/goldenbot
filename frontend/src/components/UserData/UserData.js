@@ -21,7 +21,7 @@ export const UserData = () => {
     }, [])
 
     const userDataFormated = userData.map((user) => {
-        return <div><b>{user.first_name}</b>, last seen : {user.last_seen_date}</div>
+        return <div><b>{user.first_name}</b>, score: <b>{user.activity}</b>, last seen : {user.last_seen_date}</div>
     })
 
         return isLoading ? <div>Loading</div> : <div>{userDataFormated}</div>
