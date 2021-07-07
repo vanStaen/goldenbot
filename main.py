@@ -86,7 +86,7 @@ try:
         updateUserIndb(author, message)
         # Check if there is new members in the chat
         new_chat_members = message.new_chat_members
-        if len(new_chat_members) > 0:
+        if new_chat_members:
             for new_chat_member in new_chat_members:
                 customPrint(f"new user added to group: {new_chat_member}")
                 insertNewUserIndb(new_chat_member, None, True)
