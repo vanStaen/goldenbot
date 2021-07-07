@@ -10,7 +10,7 @@
     "dev": "npm install; nodemon index",
     "version": "heroku --version; git --version",
     "log": "heroku logs --tail",
-    "deploy": "heroku login; heroku git:remote -a goldenbot-cvs; git push heroku master"
+    "deploy": "heroku git:remote -a goldenbot-cvs; git push heroku master"
   },
   "repository": {
     "type": "git",
