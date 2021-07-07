@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { UserData } from "./components/UserData/UserData";
 import './App.css';
 
 const App = () => {
@@ -7,7 +8,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-      ⚜️ Golden Circle ⚜️
+      <span className="App-Title">⚜️ Golden Circle ⚜️</span>
+      <UserData/>
       </header>
     </div>
   );
