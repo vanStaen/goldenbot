@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "eac155c9-9243-466e-9457-eb706f0f609d",
+		"name": "GoldenBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "goldenBot: localhost:5013/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5013/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5013/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenbot-cvs.herokuapp.com/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://goldenbot-cvs.herokuapp.com/users",
+					"protocol": "http",
+					"host": [
+						"goldenbot-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenbot-cvs.herokuapp.com/messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://goldenbot-cvs.herokuapp.com/messages",
+					"protocol": "http",
+					"host": [
+						"goldenbot-cvs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
