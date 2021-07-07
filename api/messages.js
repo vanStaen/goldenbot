@@ -19,7 +19,7 @@ client.connect((err) => {
 // GET all users
 router.get("/", async (req, res) => {
   try {
-    const user = await client.query(`SELECT * FROM messages`);
+    const user = await client.query(`SELECT * FROM messages WHERE author<>'Telegram' AND author<>'Group'`);
     res.status(201).json(user.rows);
   } catch (err) {
     res.status(400).json({
