@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { UserData } from "./components/UserData/UserData";
+import { Login } from "./components/Login/Login";
 import './App.css';
 
 
@@ -10,7 +11,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
       <span className="App-Title">⚜️ Golden Circle ⚜️</span>      
-          <UserData/>
+          {hasAccess ? <UserData/> : <Login/>}
       </header>
     </div>
   );
