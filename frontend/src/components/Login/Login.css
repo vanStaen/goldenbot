@@ -1,3 +1,7 @@
 .LoginFont {
     color: black;
 }
+
+.passwordInput .ant-input {
+    color: #000 !important;
+}

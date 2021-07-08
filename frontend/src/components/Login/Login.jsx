@@ -8,6 +8,7 @@ export const Login = (props) => {
 
   const handlerInputChange = (e) => {
     setCodeFromInput(e.target.value);
+    console.log(process.env.ACCESS_PWD);
   };
 
   const keyDownListener = useCallback(
@@ -28,20 +29,13 @@ export const Login = (props) => {
   }, [keyDownListener]);
 
   return (
-    <input
-      className="LoginFont"
-      name="pwd"
-      value="test"
-      onChange={handlerInputChange}
-    />
+    <div>
+      <Input.Password
+        id="code"
+        onChange={handlerInputChange}
+        placeholder="input code & confirm with enter"
+        className="passwordInput"
+      />
+    </div>
   );
 };
-
-/*
-<Input.Password
-  id="code"
-  onChange={handlerInputChange}
-  placeholder="input code & confirm with enter"
-  className="PinInput__mobileInput"
-/>
-*/

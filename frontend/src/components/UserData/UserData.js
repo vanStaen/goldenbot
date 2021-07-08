@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUserData } from "../../Calls/getUserData";
+import { getUserData } from "../../calls/getUserData";
 import { Tooltip } from "antd";
 
 import "./UserData.css";
