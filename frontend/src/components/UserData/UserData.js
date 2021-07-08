@@ -31,7 +31,9 @@ export const UserData = () => {
       <li>
         <b>{user.first_name}</b> {" "}
         <span className="SmallFont">
-          ({user.activity})
+            <Tooltip title={`${user.first_name} wrote ${user.activity} messages since we started the tracking.`}>
+                ({user.activity})
+            </Tooltip> {" "}
           last seen : {user.last_seen_date}
         </span>
       </li>
@@ -40,9 +42,3 @@ export const UserData = () => {
     </div>
   );
 };
-
-/*
-<Tooltip title="How many messages this user wrote since we started tracking">
-    ({user.activity})
-</Tooltip>
-*/

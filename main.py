@@ -42,9 +42,9 @@ try:
     ####################################
     # The bot is listening to channels #
     ####################################
-    @bot.channel_post_handler(func=lambda message: True)
-    def handle_messages_in_channel(message):
-        customPrint(message)
+    #@bot.channel_post_handler(func=lambda message: True)
+    #def handle_messages_in_channel(message):
+    #    customPrint(message)
 
     ####################################################
     # The bot is listening for files (direct or group) #
@@ -54,7 +54,7 @@ try:
         author = message.from_user
         chat_type = message.chat.type
         # customPrint(message)
-        # customPrint(f"{author.username} send a file to a {chat_type} chat")
+        customPrint(f"{author.username} send a file to a {chat_type} chat")
         # Track the file sent
         # insertMessageIndb(message.text, author)
         customPrint(message)

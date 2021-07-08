@@ -16,14 +16,19 @@ def updateUserIndb(author, message):
         user = cursor.fetchone()
 
         if user:
+
+            if message.chat.type == "private":
+                chat_title = "Private Chat"
+            else:
+                chat_title = message.chat.title
+
             print(f"> Update user tracking for {author.first_name}")
             user_activity_incremented = user[0] + 1
             now = date.today()
             postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s WHERE telegram_id='%s'"
             cursor.execute(
                 postgreSQL_update_Query,
-                (user_activity_incremented, now, message.chat.title,
-                 author.id),
+                (user_activity_incremented, now, chat_title, author.id),
             )
             connection.commit()
 
