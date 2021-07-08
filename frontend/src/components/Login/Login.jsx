@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Input } from "antd";
+import { Input, notification } from "antd";
 
 import "./Login.css";
 
@@ -8,14 +8,19 @@ export const Login = (props) => {
 
   const handlerInputChange = (e) => {
     setCodeFromInput(e.target.value);
-    console.log(process.env.ACCESS_PWD);
   };
 
   const keyDownListener = useCallback(
     (event) => {
       const keyPressed = event.key.toLowerCase();
       if (keyPressed === "enter") {
-        props.setHasAccess(true);
+        if (codeFromInput === process.env.REACT_APP_ACCESS_PWD) {
+          props.setHasAccess(true);
+        } else {
+          setCodeFromInput(null);
+          document.getElementById("password").value = null;
+          notification.error({ message: "Wrong password" });
+        }
       }
     },
     [props, codeFromInput]
@@ -31,9 +36,9 @@ export const Login = (props) => {
   return (
     <div>
       <Input.Password
-        id="code"
+        id="password"
         onChange={handlerInputChange}
-        placeholder="input code & confirm with enter"
+        placeholder="confirm with enter"
         className="passwordInput"
       />
     </div>
