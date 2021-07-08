@@ -41,6 +41,9 @@ export const Login = (props) => {
         placeholder="confirm with enter"
         className="passwordInput"
       />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
