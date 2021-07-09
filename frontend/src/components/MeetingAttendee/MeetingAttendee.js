@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { getUserData } from "../../calls/getUserData";
-import { Table } from "antd";
+import { postAttendee } from "../../calls/postAttendee";
+import { Table, Switch } from "antd";
 
-import "./UserData.css";
+import "./MeetingAttendee.css";
 
-export const UserData = () => {
+export const MeetingAttendee = () => {
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const switchHandler = (id) => {
+    const index = userData.findIndex(userData => userData.id == id)
+    const userDataTemp = userData;
+    userDataTemp[index]['last_meetup']='2021-07-09';
+    postAttendee(id);
+    setUserData(userDataTemp);
+  }
 
   const fetchUserData = async () => {
     try {
@@ -18,6 +27,7 @@ export const UserData = () => {
           username: userData.username && userData.username.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
           first_name:  userData.first_name && userData.first_name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
           last_name:  userData.last_name && userData.last_name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
+          last_meetup:  userData.last_meetup && 'Present',
         }
         return userDataWoEmoji
       });
@@ -29,11 +39,6 @@ export const UserData = () => {
   };
 
   const columns = [
-    {
-      title: "Telegram Id",
-      dataIndex: "telegram_id",
-      key: "telegram_id",
-    },
     {
       title: "Username",
       dataIndex: "username",
@@ -80,22 +85,12 @@ export const UserData = () => {
       },
     },
     {
-      title: "Activity",
-      dataIndex: "activity",
-      key: "activity",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.activity - b.activity,
-    },
-    {
-      title: "Last activity",
-      dataIndex: "last_seen_date",
-      key: "last_seen_date",
-      sorter: (a, b) => a.last_seen_date.localeCompare(b.last_seen_date),
-    },
-    {
-      title: "Last meetup",
-      dataIndex: "last_meetup",
-      key: "last_meetup",
+      title: 'Check',
+      key: 'action',
+      width: 100,
+      render: (text, record) => (
+        <Switch defaultChecked={record.last_meetup} onClick={() => switchHandler(record.id, record.last_meetup)}/>
+      ),
       sorter: (a, b) => {
         if (!a.last_meetup) {
           return +1;
@@ -115,7 +110,7 @@ export const UserData = () => {
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    <div className="ListUserData">
+    <div className="MeetingAttendee">
       <Table
         dataSource={userData}
         columns={columns}

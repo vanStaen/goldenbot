@@ -28,4 +28,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+// GET all users
+router.post("/meetup", async (req, res) => {
+  try {
+    const query = `UPDATE users SET last_meetup='${req.body.last_meetup}' WHERE id=${req.body.id}`
+    console.log(query);
+    await client.query(query);
+    res.status(201).json({"message" : "Success! Meetup presence has been recorded."});
+  } catch (err) {
+    res.status(400).json({
+      error: `${err})`,
+    });
+  }
+});
+
 module.exports = router;

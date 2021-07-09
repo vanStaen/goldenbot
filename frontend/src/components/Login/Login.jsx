@@ -40,23 +40,26 @@ export const Login = (props) => {
 
   return (
     <div className="containerLogin">
-      <div className="containerInput">
-        <Input.Password
-          id="password"
-          onChange={handlerInputChange}
-          placeholder="confirm with enter"
-          className="passwordInput"
+      <span className="Title">Golden Circle</span>
+      <div>
+        <div className="containerInput">
+          <Input.Password
+            id="password"
+            onChange={handlerInputChange}
+            placeholder="confirm with enter"
+            className="passwordInput"
+          />
+        </div>
+        <Button
+          className="passwordButton"
+          shape="circle"
+          icon={<ArrowRightOutlined />}
+          onClick={handlerButtonClick}
         />
+        <br />
+        <br />
+        <br />
       </div>
-      <Button
-        className="passwordButton"
-        shape="circle"
-        icon={<ArrowRightOutlined />}
-        onClick={handlerButtonClick}
-      />
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
