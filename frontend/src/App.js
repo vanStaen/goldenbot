@@ -3,6 +3,7 @@ import { Tabs } from "antd";
 
 import { UserData } from "./components/UserData/UserData";
 import { MeetingAttendee } from "./components/MeetingAttendee/MeetingAttendee";
+import { isMobileCheck } from "../../helpers/checkMobileTablet";
 import { Login } from "./components/Login/Login";
 
 import "./App.css";
@@ -17,7 +18,7 @@ const App = () => {
       <header className="App-header">
         {hasAccess ? (
           <div className="App-Container">
-          <Tabs defaultActiveKey="2" >
+          <Tabs defaultActiveKey="2" centered={false}>
             <TabPane tab="User in Database" key="1">
               <UserData />
             </TabPane>
