@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserData } from "../../calls/getUserData";
+import { isMobileCheck } from "../../helpers/checkMobileTablet";
 import { Table } from "antd";
 
 import "./UserData.css";
@@ -8,7 +9,9 @@ export const UserData = () => {
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchUserData = async () => {
+  const isMobile = isMobileCheck();
+
+    const fetchUserData = async () => {
     try {
       const fetchedData = await getUserData();
       const fetchedDataWoEmoji = fetchedData.map((userData, index) => {
@@ -33,6 +36,7 @@ export const UserData = () => {
       title: "Telegram Id",
       dataIndex: "telegram_id",
       key: "telegram_id",
+      responsive: ['lg'],
     },
     {
       title: "Username",
@@ -78,6 +82,7 @@ export const UserData = () => {
         }
         return a.last_name.localeCompare(b.last_name);
       },
+      responsive: ['lg'],
     },
     {
       title: "Activity",
@@ -85,6 +90,7 @@ export const UserData = () => {
       key: "activity",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.activity - b.activity,
+      responsive: ['lg'],
     },
     {
       title: "Last activity",
@@ -124,6 +130,7 @@ export const UserData = () => {
           defaultPageSize: "20",
           hideOnSinglePage: true,
         }}
+        size={isMobile ? "small" : "large"}
       />
     </div>
   );

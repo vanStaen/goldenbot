@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserData } from "../../calls/getUserData";
 import { postAttendee } from "../../calls/postAttendee";
+import { isMobileCheck } from "../../helpers/checkMobileTablet";
 import { Table, Switch } from "antd";
 
 import "./MeetingAttendee.css";
@@ -16,6 +17,8 @@ export const MeetingAttendee = () => {
     postAttendee(id);
     setUserData(userDataTemp);
   }
+
+  const isMobile = isMobileCheck();
 
   const fetchUserData = async () => {
     try {
@@ -83,11 +86,12 @@ export const MeetingAttendee = () => {
         }
         return a.last_name.localeCompare(b.last_name);
       },
+      responsive: ['lg'],
     },
     {
       title: 'Check',
       key: 'action',
-      width: 100,
+      width: isMobile ? 50 : 100,
       render: (text, record) => (
         <Switch defaultChecked={record.last_meetup} onClick={() => switchHandler(record.id, record.last_meetup)}/>
       ),
@@ -119,6 +123,7 @@ export const MeetingAttendee = () => {
           defaultPageSize: "20",
           hideOnSinglePage: true,
         }}
+        size={isMobile ? "small" : "large"}
       />
     </div>
   );
