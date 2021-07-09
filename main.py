@@ -2,6 +2,7 @@ from decouple import config
 from postgreSQL.insertMessageIndb import insertMessageIndb
 from postgreSQL.updateUserIndb import updateUserIndb
 from postgreSQL.insertNewUserIndb import insertNewUserIndb
+from postgreSQL.insertImageIndb import insertImageIndb
 from helpers.customPrint import customPrint
 
 import telebot
@@ -54,10 +55,9 @@ try:
         author = message.from_user
         chat_type = message.chat.type
         # customPrint(message)
-        customPrint(f"{author.username} send a file to a {chat_type} chat")
-        # Track the file sent
-        # insertMessageIndb(message.text, author)
-        customPrint(message)
+        customPrint(f"{author.first_name} send a file to a {chat_type} chat")
+        # Save file_id in bd
+        insertImageIndb(author, message)
         # update User in db
         updateUserIndb(author, message)
 

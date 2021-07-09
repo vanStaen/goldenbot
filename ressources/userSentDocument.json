@@ -1,0 +1,278 @@
+{
+    "content_type": "document",
+    "id": 3037,
+    "message_id": 3037,
+    "from_user": {
+        "id": 834074150,
+        "is_bot": False,
+        "first_name": "Gina",
+        "username": None,
+        "last_name": "Steiniger",
+        "language_code": None,
+        "can_join_groups": None,
+        "can_read_all_group_messages": None,
+        "supports_inline_queries": None
+    },
+    "date": 1625867065,
+    "chat": {
+        "id": -1001206615778,
+        "type": "supergroup",
+        "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️ Chat",
+        "username": None,
+        "first_name": None,
+        "last_name": None,
+        "photo": None,
+        "bio": None,
+        "description": None,
+        "invite_link": None,
+        "pinned_message": None,
+        "permissions": None,
+        "slow_mode_delay": None,
+        "sticker_set_name": None,
+        "can_set_sticker_set": None,
+        "linked_chat_id": None,
+        "location": None
+    },
+    "forward_from": None,
+    "forward_from_chat": None,
+    "forward_from_message_id": None,
+    "forward_signature": None,
+    "forward_sender_name": None,
+    "forward_date": None,
+    "reply_to_message": {
+        "content_type": "photo",
+        "id": 65,
+        "message_id": 65,
+        "from_user": <telebot.types.User object at 0x10f02d820>,
+        "date": 1618054354,
+        "chat": <telebot.types.Chat object at 0x10f02d850>,
+        "forward_from": None,
+        "forward_from_chat": <telebot.types.Chat object at 0x10f02d880>,
+        "forward_from_message_id": 17,
+        "forward_signature": None,
+        "forward_sender_name": None,
+        "forward_date": 1618054351,
+        "reply_to_message": None,
+        "edit_date": 1618448971,
+        "media_group_id": None,
+        "author_signature": None,
+        "text": None,
+        "entities": None,
+        "caption_entities": None,
+        "audio": None,
+        "document": None,
+        "photo": [<telebot.types.PhotoSize object at 0x10f02d8e0>, <telebot.types.PhotoSize object at 0x10f02d910>, <telebot.types.PhotoSize object at 0x10f02d970>, <telebot.types.PhotoSize object at 0x10f02d9d0>
+        ],
+        "sticker": None,
+        "video": None,
+        "video_note": None,
+        "voice": None,
+        "caption": None,
+        "contact": None,
+        "location": None,
+        "venue": None,
+        "animation": None,
+        "dice": None,
+        "new_chat_member": None,
+        "new_chat_members": None,
+        "left_chat_member": None,
+        "new_chat_title": None,
+        "new_chat_photo": None,
+        "delete_chat_photo": None,
+        "group_chat_created": None,
+        "supergroup_chat_created": None,
+        "channel_chat_created": None,
+        "migrate_to_chat_id": None,
+        "migrate_from_chat_id": None,
+        "pinned_message": None,
+        "invoice": None,
+        "successful_payment": None,
+        "connected_website": None,
+        "reply_markup": None,
+        "json": {
+            "message_id": 65,
+            "from": {
+                "id": 777000,
+                "is_bot": False,
+                "first_name": "Telegram"
+            },
+            "sender_chat": {
+                "id": -1001257629809,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️",
+                "type": "channel"
+            },
+            "chat": {
+                "id": -1001206615778,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️ Chat",
+                "type": "supergroup"
+            },
+            "date": 1618054354,
+            "edit_date": 1618448971,
+            "forward_from_chat": {
+                "id": -1001257629809,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️",
+                "type": "channel"
+            },
+            "forward_from_message_id": 17,
+            "forward_date": 1618054351,
+            "photo": [
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADcwADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt4",
+                    "file_size": 1420,
+                    "width": 90,
+                    "height": 65
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADbQADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEty",
+                    "file_size": 16034,
+                    "width": 320,
+                    "height": 231
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADeQADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt-",
+                    "file_size": 59524,
+                    "width": 900,
+                    "height": 650
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADeAADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt9",
+                    "file_size": 59811,
+                    "width": 800,
+                    "height": 578
+                }
+            ]
+        }
+    },
+    "edit_date": None,
+    "media_group_id": None,
+    "author_signature": None,
+    "text": None,
+    "entities": None,
+    "caption_entities": None,
+    "audio": None,
+    "document": {
+        "file_id": "BQACAgIAAx0CR-t-4gACC91g6MM5sT-haS-N5jnw60rDdo8HkwACVA0AAqPVSEtQ0mXoCsOI0yAE",
+        "file_unique_id": "AgADVA0AAqPVSEs",
+        "thumb": <telebot.types.PhotoSize object at 0x10f02da30>,
+        "file_name": "IMG_3826.PNG",
+        "mime_type": "image/jpeg",
+        "file_size": 222651
+    },
+    "photo": None,
+    "sticker": None,
+    "video": None,
+    "video_note": None,
+    "voice": None,
+    "caption": None,
+    "contact": None,
+    "location": None,
+    "venue": None,
+    "animation": None,
+    "dice": None,
+    "new_chat_member": None,
+    "new_chat_members": None,
+    "left_chat_member": None,
+    "new_chat_title": None,
+    "new_chat_photo": None,
+    "delete_chat_photo": None,
+    "group_chat_created": None,
+    "supergroup_chat_created": None,
+    "channel_chat_created": None,
+    "migrate_to_chat_id": None,
+    "migrate_from_chat_id": None,
+    "pinned_message": None,
+    "invoice": None,
+    "successful_payment": None,
+    "connected_website": None,
+    "reply_markup": None,
+    "json": {
+        "message_id": 3037,
+        "from": {
+            "id": 834074150,
+            "is_bot": False,
+            "first_name": "Gina",
+            "last_name": "Steiniger"
+        },
+        "chat": {
+            "id": -1001206615778,
+            "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️ Chat",
+            "type": "supergroup"
+        },
+        "date": 1625867065,
+        "reply_to_message": {
+            "message_id": 65,
+            "from": {
+                "id": 777000,
+                "is_bot": False,
+                "first_name": "Telegram"
+            },
+            "sender_chat": {
+                "id": -1001257629809,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️",
+                "type": "channel"
+            },
+            "chat": {
+                "id": -1001206615778,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️ Chat",
+                "type": "supergroup"
+            },
+            "date": 1618054354,
+            "edit_date": 1618448971,
+            "forward_from_chat": {
+                "id": -1001257629809,
+                "title": "⚜️ GOLDEN CIRCLE - BERLIN⚜️",
+                "type": "channel"
+            },
+            "forward_from_message_id": 17,
+            "forward_date": 1618054351,
+            "photo": [
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADcwADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt4",
+                    "file_size": 1420,
+                    "width": 90,
+                    "height": 65
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADbQADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEty",
+                    "file_size": 16034,
+                    "width": 320,
+                    "height": 231
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADeQADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt-",
+                    "file_size": 59524,
+                    "width": 900,
+                    "height": 650
+                },
+                {
+                    "file_id": "AgACAgIAAx0CR-t-4gADQWDowzmzt9HzEuwxIbm6eNeb3bIwAAKosjEbaw-4S2l4z23duiIjAQADAgADeAADIAQ",
+                    "file_unique_id": "AQADqLIxG2sPuEt9",
+                    "file_size": 59811,
+                    "width": 800,
+                    "height": 578
+                }
+            ]
+        },
+        "document": {
+            "file_name": "IMG_3826.PNG",
+            "mime_type": "image/jpeg",
+            "thumb": {
+                "file_id": "AAMCAgADHQJH637iAAIL3WDowzmxP6FpL43mOfDrSsN2jweTAAJUDQACo9VIS1DSZegKw4jTAQAHbQADIAQ",
+                "file_unique_id": "AQADVA0AAqPVSEty",
+                "file_size": 17191,
+                "width": 238,
+                "height": 320
+            },
+            "file_id": "BQACAgIAAx0CR-t-4gACC91g6MM5sT-haS-N5jnw60rDdo8HkwACVA0AAqPVSEtQ0mXoCsOI0yAE",
+            "file_unique_id": "AgADVA0AAqPVSEs",
+            "file_size": 222651
+        }
+    }
+}
