@@ -54,6 +54,9 @@ export const Login = (props) => {
         icon={<ArrowRightOutlined />}
         onClick={handlerButtonClick}
       />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
