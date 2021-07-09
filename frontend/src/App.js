@@ -11,7 +11,7 @@ import "./App.css";
 const { TabPane } = Tabs;
 
 const App = () => {
-  const [hasAccess, setHasAccess] = useState(true);
+  const [hasAccess, setHasAccess] = useState(false);
 
   const isMobile = isMobileCheck();
 
