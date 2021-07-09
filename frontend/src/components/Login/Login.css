@@ -4,4 +4,18 @@
 
 .passwordInput .ant-input {
     color: #000 !important;
+    display: inline-block;
+}
+
+.containerLogin{
+    display: inline-block;
+}
+.containerInput{
+    display: inline-block;
+}
+
+.passwordButton {
+    display: inline-block;
+    border: 1px solid red;
+    margin: .5em
 }
