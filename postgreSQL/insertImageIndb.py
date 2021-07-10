@@ -1,9 +1,11 @@
 import psycopg2
+import requests
+from decouple import config
 from datetime import date
 from postgreSQL.configdb import configdb
 
 
-def insertImageIndb(author, message):
+def insertImageIndb(author, file_info, file_type):
 
     try:
         params = configdb(section="heroku")
@@ -11,11 +13,11 @@ def insertImageIndb(author, message):
 
         cursor = connection.cursor()
         now = date.today()
-        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_type, author_id, date_added) VALUES(%s, %s, %s, %s);"
+        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_type, file_path, author_id, date_added) VALUES(%s, %s, %s, %s, %s);"
 
         cursor.execute(
             postgreSQL_insert_Query,
-            (message.json.document.file_id, message.json.document.mime_type,
+            (file_info.file_id, file_type, file_info.file_path,
              author.first_name, now),
         )
         connection.commit()
@@ -27,3 +29,10 @@ def insertImageIndb(author, message):
         if connection:
             cursor.close()
             connection.close()
+
+    # Download Image
+    image_full_path = 'https://api.telegram.org/file/bot{0}/{1}'.format(
+        config("API_KEY"), file_info.file_path)
+    file = requests.get(image_full_path)
+    print(file)
+    # TODO save file to s3

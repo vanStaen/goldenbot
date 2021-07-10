@@ -54,10 +54,11 @@ try:
     def handle_docs_audio(message):
         author = message.from_user
         chat_type = message.chat.type
-        # customPrint(message)
+        customPrint(message)
         customPrint(f"{author.first_name} send a file to a {chat_type} chat")
         # Save file_id in bd
-        insertImageIndb(author, message)
+        file_info = bot.get_file(message.json.document.file_id)
+        insertImageIndb(author, file_info, message.json.document.mime_type)
         # update User in db
         updateUserIndb(author, message)
 
