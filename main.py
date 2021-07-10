@@ -40,25 +40,32 @@ try:
         bot.send_message(
             chat_id, "I forgot the rules, but soon they will be listed here.")
 
-    ####################################
-    # The bot is listening to channels #
-    ####################################
-    #@bot.channel_post_handler(func=lambda message: True)
-    #def handle_messages_in_channel(message):
-    #    customPrint(message)
-
     ####################################################
     # The bot is listening for files (direct or group) #
     ####################################################
     @bot.message_handler(content_types=['photo'])
-    def handle_images(message):
+    def handle_photos(message):
         author = message.from_user
         chat_type = message.chat.type
-        customPrint(f"> {author.first_name} send a file to a {chat_type} chat")
+        customPrint(
+            f"> {author.first_name} send a photo to a {chat_type} chat")
         # Save file_id in bd
         last_pic_array = len(message.json.get('photo')) - 1
         file_info = bot.get_file(
             message.json.get('photo')[last_pic_array].get('file_id'))
+        insertImageIndb(author, file_info)
+        # update User in db
+        updateUserIndb(author, message)
+
+    @bot.message_handler(content_types=["document"])
+    def handle_documents(message):
+        author = message.from_user
+        chat_type = message.chat.type
+        # customPrint(message)
+        customPrint(
+            f"> {author.first_name} send a document to a {chat_type} chat")
+        # Save file_id in bd
+        file_info = bot.get_file(message.json.document.file_id)
         insertImageIndb(author, file_info)
         # update User in db
         updateUserIndb(author, message)
