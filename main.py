@@ -50,15 +50,16 @@ try:
     ####################################################
     # The bot is listening for files (direct or group) #
     ####################################################
-    @bot.message_handler(content_types=["document", "audio"])
-    def handle_docs_audio(message):
+    @bot.message_handler(content_types=['photo'])
+    def handle_images(message):
         author = message.from_user
         chat_type = message.chat.type
-        customPrint(message)
-        customPrint(f"{author.first_name} send a file to a {chat_type} chat")
+        customPrint(f"> {author.first_name} send a file to a {chat_type} chat")
         # Save file_id in bd
-        file_info = bot.get_file(message.json.document.file_id)
-        insertImageIndb(author, file_info, message.json.document.mime_type)
+        last_pic_array = len(message.json.get('photo')) - 1
+        file_info = bot.get_file(
+            message.json.get('photo')[last_pic_array].get('file_id'))
+        insertImageIndb(author, file_info)
         # update User in db
         updateUserIndb(author, message)
 
