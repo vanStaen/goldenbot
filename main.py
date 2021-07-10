@@ -88,12 +88,13 @@ try:
         updateUserIndb(author, message)
         # Check if there is new members in the chat
         new_chat_members = message.new_chat_members
-        customPrint(f"new_chat_members")
-        customPrint(f"{new_chat_members}")
         if new_chat_members:
+            customPrint(f"new_chat_members")
+            customPrint(f"{new_chat_members}")
             for new_chat_member in new_chat_members:
-                customPrint(f"new user added to group: {new_chat_member}")
+                customPrint(f"> new user added to group: {new_chat_member}")
                 insertNewUserIndb(new_chat_member, None, True)
+                #TODO: Send welcome mail
 
 except telebot.apihelper.ApiException as e:
     if e.result.status_code == 403 or e.result.status_code == 400:
