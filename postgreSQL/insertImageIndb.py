@@ -11,11 +11,12 @@ def insertImageIndb(author, message):
 
         cursor = connection.cursor()
         now = date.today()
-        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, author_id, date_added) VALUES(%s, %s, %s);"
+        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_type, author_id, date_added) VALUES(%s, %s, %s, %s);"
 
         cursor.execute(
             postgreSQL_insert_Query,
-            (message.json.document.file_id, author.first_name, now),
+            (message.json.document.file_id, message.json.document.mime_type,
+             author.first_name, now),
         )
         connection.commit()
 
