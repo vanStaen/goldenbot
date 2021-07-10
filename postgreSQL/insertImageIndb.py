@@ -9,19 +9,22 @@ from postgreSQL.configdb import configdb
 
 def insertImageIndb(author, file_info):
 
+    file_name = file_info.file_path.replace("/", "_")
+    file_s3 = f"https://goldenbot-static01.s3.eu-central-1.amazonaws.com/{file_name}"
+
     try:
         params = configdb(section="heroku")
         connection = psycopg2.connect(**params)
 
         cursor = connection.cursor()
         now = date.today()
-        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_path, author_id, date_added) VALUES(%s, %s, %s, %s);"
+        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_path, author_id, date_added, file_s3) VALUES(%s, %s, %s, %s);"
 
         print(f"> Photo added to db")
 
         cursor.execute(
             postgreSQL_insert_Query,
-            (file_info.file_id, file_info.file_path, author.id, now),
+            (file_info.file_id, file_info.file_path, author.id, now, file_s3),
         )
         connection.commit()
 
@@ -36,7 +39,6 @@ def insertImageIndb(author, file_info):
     # Download Image
     image_full_path = 'https://api.telegram.org/file/bot{0}/{1}'.format(
         config("API_KEY"), file_info.file_path)
-    file_name = file_info.file_path.replace("/", "_")
     request.urlretrieve(image_full_path, f"uploads/{file_name}")
 
     # save file to s3
@@ -47,6 +49,6 @@ def insertImageIndb(author, file_info):
     upload_file_bucket = config("S3_BUCKET_ID")
 
     with open(f"uploads/{file_name}", "rb") as file:
-        result = s3_client.upload_fileobj(file, upload_file_bucket, file_name)
+        s3_client.upload_fileobj(file, upload_file_bucket, file_name)
         print(f"> Photo uploaded to s3")
         os.remove(f"uploads/{file_name}")

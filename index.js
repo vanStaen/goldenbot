@@ -29,6 +29,7 @@ app.get('/', (req, res) => { res.sendFile(path.join(__dirname, "build", "index.h
 // Router to API endpoints
 app.use("/users", require("./api/users"));
 app.use("/messages", require("./api/messages"));
+app.use("/images", require("./api/images"));
 
 // Listen on a port
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
