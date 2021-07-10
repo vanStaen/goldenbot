@@ -49,3 +49,4 @@ def insertImageIndb(author, file_info):
     with open(f"uploads/{file_name}", "rb") as file:
         result = s3_client.upload_fileobj(file, upload_file_bucket, file_name)
         print(f"> Photo uploaded to s3")
+        os.remove(f"uploads/{file_name}")
