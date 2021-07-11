@@ -3,6 +3,7 @@ import { Tabs } from "antd";
 
 import { UserData } from "./components/UserData/UserData";
 import { MeetingAttendee } from "./components/MeetingAttendee/MeetingAttendee";
+import { Gallery } from "./components/Gallery/Gallery";
 import { isMobileCheck } from "./helpers/checkMobileTablet";
 import { Login } from "./components/Login/Login";
 
@@ -11,7 +12,7 @@ import "./App.css";
 const { TabPane } = Tabs;
 
 const App = () => {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [hasAccess, setHasAccess] = useState(true);
 
   const isMobile = isMobileCheck();
 
@@ -20,14 +21,17 @@ const App = () => {
       <header className="App-header">
         {hasAccess ? (
           <div className="App-Container">
-          <Tabs defaultActiveKey="2" centered={isMobile}>
-            <TabPane tab="User in Database" key="1">
-              <UserData />
-            </TabPane>
-            <TabPane tab="Meetup attendees" key="2">
-              <MeetingAttendee />
-            </TabPane>
-          </Tabs>
+            <Tabs defaultActiveKey="2" centered={isMobile}>
+              <TabPane tab="User in Database" key="1">
+                <UserData />
+              </TabPane>
+              <TabPane tab="Meetup attendees" key="2">
+                <MeetingAttendee />
+              </TabPane>
+              <TabPane tab="User Images" key="3">
+                <Gallery />
+              </TabPane>
+            </Tabs>
           </div>
         ) : (
           <Login setHasAccess={setHasAccess} />
