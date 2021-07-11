@@ -13,7 +13,6 @@ const { TabPane } = Tabs;
 
 const App = () => {
   const [hasAccess, setHasAccess] = useState(true);
-
   const isMobile = isMobileCheck();
 
   return (
@@ -22,13 +21,13 @@ const App = () => {
         {hasAccess ? (
           <div className="App-Container">
             <Tabs defaultActiveKey="2" centered={isMobile}>
-              <TabPane tab="User in Database" key="1">
+              <TabPane tab={isMobile ? "User in Database" : "User in Database"} key="1">
                 <UserData />
               </TabPane>
-              <TabPane tab="Meetup attendees" key="2">
+              <TabPane tab={isMobile ? "Meetup" : "Meetup attendees"} key="2">
                 <MeetingAttendee />
               </TabPane>
-              <TabPane tab="User Images" key="3">
+              <TabPane tab={isMobile ? "Images" : "User Images"} key="3">
                 <Gallery />
               </TabPane>
             </Tabs>
