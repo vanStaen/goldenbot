@@ -11,6 +11,7 @@
 
 .images__container {
   border: 5px solid transparent;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
