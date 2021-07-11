@@ -12,7 +12,7 @@ import "./App.css";
 const { TabPane } = Tabs;
 
 const App = () => {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [hasAccess, setHasAccess] = useState(true);
   const isMobile = isMobileCheck();
 
   return (

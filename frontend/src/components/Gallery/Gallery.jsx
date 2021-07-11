@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getUserImages } from "../../calls/getUserImages";
 import { Image } from "./Image";
 import { GalleryOverlay } from "./GalleryOverlay/GalleryOverlay";
@@ -39,14 +39,13 @@ export const Gallery = () => {
       )}
       {fetchedImages.map((image, index) => {
         return (
-          <Fragment>
-            <Image
-              image={image}
-              index={index}
-              setSelected={setSelected}
-              setShowOverlay={setShowOverlay}
-            />
-          </Fragment>
+          <Image
+            image={image}
+            index={index}
+            setSelected={setSelected}
+            setShowOverlay={setShowOverlay}
+            key={index}
+          />
         );
       })}
     </div>
