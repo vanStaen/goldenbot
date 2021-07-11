@@ -28,4 +28,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// UPDATE user meetup
+router.post("/user", async (req, res) => {
+  try {
+    const query = `UPDATE images SET date_added='${req.body.date}', author_id='${req.body.user}' WHERE id=${req.body.id}`;
+    await client.query(query);
+    res.status(201).json({ message: "Success! Image data have been updated." });
+  } catch (err) {
+    res.status(400).json({
+      error: `${err})`,
+    });
+  }
+});
+
 module.exports = router;

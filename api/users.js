@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 });
 
 
-// GET all users
+// UPDATE user meetup
 router.post("/meetup", async (req, res) => {
   try {
     const query = `UPDATE users SET last_meetup='${req.body.last_meetup}' WHERE id=${req.body.id}`
