@@ -2,9 +2,8 @@ const fs = require('fs');
 const { Client } = require("pg");
 require('dotenv').config({ path: __dirname + '/./../.env' })
 
-
 // init Postgres
-const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true })
+const client = new Client({ connectionString: process.env.HEROKU_DATABASE_URL, ssl: true })
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; // This bypasses the SSL verification
 
 

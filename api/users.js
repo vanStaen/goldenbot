@@ -56,7 +56,7 @@ router.post("/meetup", async (req, res) => {
 // UPDATE user main_image
 router.post("/main_image", async (req, res) => {
   try {
-    const query = `UPDATE users SET main_image='${req.body.pic_id}' WHERE telegram_id=${req.body.telegram_id}`
+    const query = `UPDATE users SET main_image='${req.body.pic_id}' WHERE telegram_id='${req.body.telegram_id}'`
     await client.query(query);
     res.status(201).json({"message" : "Success! Main image has been updated."});
   } catch (err) {
@@ -82,7 +82,7 @@ router.post("/new", async (req, res) => {
 // UPDATE user join_date
 router.post("/joined", async (req, res) => {
   try {
-    const query = `UPDATE users SET joined_date='${req.body.joined_date}' WHERE telegram_id=${req.body.telegram_id}`
+    const query = `UPDATE users SET joined_date='${req.body.joined_date}' WHERE telegram_id='${req.body.telegram_id}'`
     await client.query(query);
     res.status(201).json({"message" : "Success! Joined date has been updated."});
   } catch (err) {

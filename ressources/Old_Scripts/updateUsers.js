@@ -69,47 +69,48 @@ const postUserJoinDate = async (telegramId, joinedDate) => {
 };
 
 const run = async () => {
-  for (const message of data.messages) {
-    if (message.type === "message") {
-      if (message.from_id.includes("user")) {
-        date = message.date.substring(0, 10);
-        telegram_id = message.from_id.replace("user", "");
-        //if Telegram_id not in DB, add it to bd, and put first message date as Joined_date
-        const userData = await getSingleUser(telegram_id);
-        if (userData.length) {
-          // Check if has a join_date
-          if (userData[0].joined_date === null) {
-            // Add joined_date to user
-            await postUserJoinDate(telegram_id, date);
-          }
-          if (message.photo) {
-            // Check if has a main_image
-            if (userData[0].main_image === null) {
-              // Get photo_id based on name
-              const photoName = message.photo.replace("photos/", "");
-              const photoId = await postImageGetId(photoName);
-              // Set photoId as Main Image
-              await postUserMainImage(photoId, telegram_id);
+    for (const message of data.messages) {
+      if (message.type === "message") {
+        if (message.from_id.includes("user")) {
+          date = message.date.substring(0, 10);
+          telegram_id = message.from_id.replace("user", "");
+          // if Telegram_id not, add it to db, and put first message date as Joined_date
+          const userData = await getSingleUser(telegram_id);
+          if (userData.length) {
+            // Check if has a join_date
+            if (userData[0].joined_date === null) {
+              // Add joined_date to user
+              await postUserJoinDate(telegram_id, date);
+              console.log("postUserJoinDate", telegram_id)
             }
-          }
-        } else {
-          // Add user to db
-          await postNewUser(telegram_id, date);
-          // If message is a photo:
-          if (message.photo) {
-            // Check if has a main_image
-            if (userData[0].main_image === null) {
+            if (message.photo) {
+              // Check if has a main_image
+              if (userData[0].main_image === null) {
+                // Get photo_id based on name
+                const photoName = message.photo.replace("photos/", "");
+                const photoId = await postImageGetId(photoName);
+                // Set photoId as Main Image
+                await postUserMainImage(photoId, telegram_id);
+                console.log("postUserMainImage", photoId, telegram_id)
+              }
+            }
+          } else {
+            // Add user to db
+            await postNewUser(telegram_id, date);
+            console.log("postNewUser", telegram_id)
+            // If message is a photo:
+            if (message.photo) {
               // Get photo_id based on name
               const photoName = message.photo.replace("photos/", "");
               const photoId = await postImageGetId(photoName);
               // Set photoId as Main Image
               await postUserMainImage(photoId, telegram_id);
+              console.log("postUserMainImage", photoId, telegram_id)
             }
           }
         }
       }
     }
-  }
 };
 
 run();
