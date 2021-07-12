@@ -134,6 +134,10 @@ export const GalleryOverlay = (props) => {
             <div className="overlay__tags">
               <span>{userData.first_name}</span>
             </div>
+          ) : userData && userData.telegram_id != undefined ? (
+            <div className="overlay__tags">
+              <span>id #{userData.telegram_id}</span>
+            </div>
           ) : (
             <div className="overlay__tags error">
               <span>USER NOT FOUND</span>

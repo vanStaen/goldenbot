@@ -23,7 +23,10 @@ def updateUserIndb(author, message):
                 chat_title = message.chat.title
 
             print(f"> Update user tracking for {author.first_name}")
-            user_activity_incremented = user[0] + 1
+            if user[0]:
+                user_activity_incremented = user[0] + 1
+            else:
+                user_activity_incremented = 1
             now = date.today()
             postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s WHERE telegram_id='%s'"
             cursor.execute(
