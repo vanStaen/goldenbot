@@ -28,12 +28,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-// UPDATE user meetup
-router.post("/user", async (req, res) => {
+
+// return image ID based on file_path
+router.post("/id", async (req, res) => {
   try {
-    const query = `UPDATE images SET date_added='${req.body.date}', author_id='${req.body.user}' WHERE id=${req.body.id}`;
-    await client.query(query);
-    res.status(201).json({ message: "Success! Image data have been updated." });
+    const user = await client.query(`SELECT * FROM images WHERE file_path='${req.body.file_path}'`);
+    res.status(201).json(user.rows[0].id);
   } catch (err) {
     res.status(400).json({
       error: `${err})`,

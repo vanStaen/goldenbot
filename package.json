@@ -12,7 +12,8 @@
     "log": "heroku logs --tail",
     "buildfe": "cd frontend/; npm run build; cd ../; git add -A; git commit -a -m \"deploy frontend Build\"; git push;",
     "deploy": "npm i; npm run buildfe; heroku git:remote -a goldenbot-cvs; git push heroku master; heroku open",
-    "killAll": "killall -9 node"
+    "killAll": "killall -9 node",
+    "backup": "cd helpers/; node createDatabaseBackUpFile.js; cd ../; git add -A; git commit -a -m \"database backup\"; git push;"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "python"
   ],
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "path": "^0.12.7",
