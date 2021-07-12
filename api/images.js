@@ -19,7 +19,7 @@ client.connect((err) => {
 // GET all images
 router.get("/", async (req, res) => {
   try {
-    const user = await client.query(`SELECT * FROM images ORDER BY id ASC`);
+    const user = await client.query(`SELECT * FROM images ORDER BY date_added DESC`);
     res.status(201).json(user.rows);
   } catch (err) {
     res.status(400).json({

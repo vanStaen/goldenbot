@@ -18,7 +18,7 @@ def insertImageIndb(author, file_info):
 
         cursor = connection.cursor()
         now = date.today()
-        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_path, author_id, date_added, file_s3) VALUES(%s, %s, %s, %s);"
+        postgreSQL_insert_Query = "INSERT INTO public.images(file_id, file_path, author_id, date_added, file_s3) VALUES(%s, %s, %s, %s, %s);"
 
         print(f"> Photo added to db")
 
