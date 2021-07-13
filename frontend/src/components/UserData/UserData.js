@@ -11,20 +11,38 @@ export const UserData = () => {
 
   const isMobile = isMobileCheck();
 
-    const fetchUserData = async () => {
+  const fetchUserData = async () => {
     try {
       const fetchedData = await getUserData();
       const fetchedDataWoEmoji = fetchedData.map((userData, index) => {
         const userDataWoEmoji = {
           ...userData,
           key: `key_${index}`,
-          username: userData.username && userData.username.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
-          first_name:  userData.first_name && userData.first_name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
-          last_name:  userData.last_name && userData.last_name.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, ''),
-        }
-        return userDataWoEmoji
+          username:
+            userData.username &&
+            userData.username.replace(
+              /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+              ""
+            ),
+          first_name:
+            userData.first_name &&
+            userData.first_name.replace(
+              /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+              ""
+            ),
+          last_name:
+            userData.last_name &&
+            userData.last_name.replace(
+              /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+              ""
+            ),
+        };
+        return userDataWoEmoji;
       });
-      setUserData(fetchedDataWoEmoji);
+      const fetchedDataWoEmojiFiltered = fetchedDataWoEmoji.filter((user) => {
+        return user.first_name !== 'Group' && user.first_name !== 'Telegram'
+      });
+      setUserData(fetchedDataWoEmojiFiltered);
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +54,7 @@ export const UserData = () => {
       title: "Telegram Id",
       dataIndex: "telegram_id",
       key: "telegram_id",
-      responsive: ['lg'],
+      responsive: ["lg"],
     },
     {
       title: "Username",
@@ -82,7 +100,7 @@ export const UserData = () => {
         }
         return a.last_name.localeCompare(b.last_name);
       },
-      responsive: ['lg'],
+      responsive: ["lg"],
     },
     {
       title: "Activity",
@@ -90,13 +108,21 @@ export const UserData = () => {
       key: "activity",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.activity - b.activity,
-      responsive: ['lg'],
+      responsive: ["lg"],
     },
     {
       title: "Last activity",
       dataIndex: "last_seen_date",
       key: "last_seen_date",
-      sorter: (a, b) => a.last_seen_date.localeCompare(b.last_seen_date),
+      sorter: (a, b) => {
+        if (!a.last_seen_date) {
+          return +1;
+        }
+        if (!b.last_seen_date) {
+          return -1;
+        }
+        return a.last_seen_date.localeCompare(b.last_seen_date);
+      },
     },
     {
       title: "Last meetup",
