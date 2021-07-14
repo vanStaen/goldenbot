@@ -12,7 +12,7 @@
 }
 
 .overlay__background {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   top: 0;
   left: 0;
@@ -81,7 +81,10 @@
 }
 
 .overlay__picture {
+  border: 1px solid rgba(255,255,255,.25);
+  min-width: 25vw;
   max-width: 75vw;
+  min-height: 25vh;
   max-height: 80vh; 
 }
 
@@ -113,4 +116,15 @@
 
 .error span{
   background-color: red;
+}
+
+.overlay__action{
+  height: 30px;
+}
+
+.overlay__delete {
+  margin: 10px;
+  font-size: 1.5em;
+  color: White;
+  float: right;
 }

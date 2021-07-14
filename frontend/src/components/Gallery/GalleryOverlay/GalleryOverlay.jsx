@@ -1,5 +1,10 @@
 import React, { useEffect, useCallback, useRef, useState } from "react";
-import { LeftOutlined, RightOutlined, CloseOutlined } from "@ant-design/icons";
+import {
+  LeftOutlined,
+  RightOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
 import { postSingleUserData } from "../../../calls/postSingleUserData";
 import "./GalleryOverlay.css";
@@ -143,6 +148,11 @@ export const GalleryOverlay = (props) => {
               <span>USER NOT FOUND</span>
             </div>
           ))}
+        <div className="overlay__action">
+          <div className="overlay__delete">
+            <DeleteOutlined />
+          </div>
+        </div>
       </div>
     </div>
   );

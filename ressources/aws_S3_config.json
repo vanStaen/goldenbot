@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddCannedAcl",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::056781615164:user/goldenbot"
+            },
+            "Action": [
+                "s3:PutObjectAcl",
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3:::goldenbot-static01/*"
+        },
+        {
+            "Sid": "Allow get requests originating from goldenbot-cvs.herokuapp.com",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::056781615164:user/goldenbot"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::goldenbot-static01/*",
+            "Condition": {
+                "StringLike": {
+                    "aws:Referer": [
+                        "https://goldenbot-cvs.herokuapp.com/*",
+                        "http://goldenbot-cvs.herokuapp.com/*"
+                    ]
+                }
+            }
+        }
+    ]
+}

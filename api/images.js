@@ -41,4 +41,32 @@ router.post("/id", async (req, res) => {
   }
 });
 
+
+// DELETE single file object from s3 (based on key)
+router.delete("/", async (req, res) => {
+
+  key =  req.body.file_path
+  try {
+    const params = {
+      Bucket: process.env.S3_BUCKET_ID,
+      Key: req.params.key,
+    };
+    await Promise.all([
+      s3.deleteObject(params, function (err, data) {
+        if (err) console.log(err, err.stack);  // error
+        else     console.log(data);            // deleted
+      })
+    ]);
+    const deleteImage = `DELETE FROM images WHERE file_path='${req.params.key}';`;
+    await client.query(deleteImage);
+    res
+      .status(200)
+      .json({ success: `Image "${req.params.key}" was deleted.` });
+  } catch (err) {
+    res.status(400).json({
+      error: `${err}`,
+    });
+  }
+});
+
 module.exports = router;
