@@ -42,19 +42,19 @@ def updateUserIndb(author, message):
             if username != author.username:
                 postgreSQL_update_username_Query = "UPDATE users SET username=%s WHERE telegram_id='%s'"
                 cursor.execute(postgreSQL_update_username_Query, (
-                    username,
+                    author.username,
                     author.id,
                 ))
             if first_name != author.first_name:
                 postgreSQL_update_first_name_Query = "UPDATE users SET first_name=%s WHERE telegram_id='%s'"
                 cursor.execute(postgreSQL_update_first_name_Query, (
-                    first_name,
+                    author.first_name,
                     author.id,
                 ))
             if last_name != author.last_name:
                 postgreSQL_update_last_name_Query = "UPDATE users SET last_name=%s WHERE telegram_id='%s'"
                 cursor.execute(postgreSQL_update_last_name_Query, (
-                    last_name,
+                    author.last_name,
                     author.id,
                 ))
 
