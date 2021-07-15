@@ -1,4 +1,5 @@
 const express = require("express");
+const AWS = require("aws-sdk");
 const router = express.Router();
 const { Client } = require("pg");
 
@@ -15,6 +16,18 @@ client.connect((err) => {
     console.error("connection error", err.stack);
   }
 });
+
+// Setup the AWS
+AWS.config.region = "eu-west-1";
+AWS.config.signatureVersion = "v4";
+
+// Define s3 bucket login info
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_IAM_KEY,
+  secretAccessKey: process.env.AWS_IAM_SECRET_KEY,
+  Bucket: process.env.S3_BUCKET_ID,
+});
+
 
 // GET all images
 router.get("/", async (req, res) => {
@@ -49,19 +62,19 @@ router.delete("/", async (req, res) => {
   try {
     const params = {
       Bucket: process.env.S3_BUCKET_ID,
-      Key: req.params.key,
+      Key: key,
     };
     await Promise.all([
       s3.deleteObject(params, function (err, data) {
-        if (err) console.log(err, err.stack);  // error
-        else     console.log(data);            // deleted
+        //if (err) console.log(err, err.stack);  // error
+        //else     console.log(data);            // deleted
       })
     ]);
-    const deleteImage = `DELETE FROM images WHERE file_path='${req.params.key}';`;
+    const deleteImage = `DELETE FROM images WHERE file_path='${key}';`;
     await client.query(deleteImage);
     res
       .status(200)
-      .json({ success: `Image "${req.params.key}" was deleted.` });
+      .json({ success: `Image ${key} was deleted.` });
   } catch (err) {
     res.status(400).json({
       error: `${err}`,

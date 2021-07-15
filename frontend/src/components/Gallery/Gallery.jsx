@@ -32,6 +32,7 @@ export const Gallery = () => {
       {showOverlay && (
         <GalleryOverlay
           images={fetchedImages}
+          setFetchedImages={setFetchedImages}
           selected={seleted}
           setSelected={setSelected}
           setShowOverlay={setShowOverlay}

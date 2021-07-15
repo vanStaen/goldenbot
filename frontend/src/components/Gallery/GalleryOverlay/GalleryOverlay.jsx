@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 
 import { postSingleUserData } from "../../../calls/postSingleUserData";
+import { deleteUserImage } from "../../../calls/deleteUserImage";
 import "./GalleryOverlay.css";
 
 export const GalleryOverlay = (props) => {
@@ -128,7 +129,7 @@ export const GalleryOverlay = (props) => {
         <img
           className="overlay__picture"
           src={props.images[props.selected].file_s3}
-          alt={props.selected}
+          alt={props.images[props.selected].file_path}
         />
         {!isLoading &&
           (userData && userData.username != undefined ? (
@@ -150,7 +151,15 @@ export const GalleryOverlay = (props) => {
           ))}
         <div className="overlay__action">
           <div className="overlay__delete">
-            <DeleteOutlined />
+            <DeleteOutlined
+              onClick={() => {
+                deleteUserImage(props.images[props.selected].file_path);
+                const ArrayImagesNew = props.images;
+                ArrayImagesNew.splice(props.selected, 1);
+                props.setShowOverlay(false);
+                props.setFetchedImages(ArrayImagesNew);
+              }}
+            />
           </div>
         </div>
       </div>

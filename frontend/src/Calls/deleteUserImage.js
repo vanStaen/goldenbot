@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getUserImages = async (file_path) => {
+export const deleteUserImage = async (file_path) => {
 
     const requestBody = {
         "file_path": file_path,
