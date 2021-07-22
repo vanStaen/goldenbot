@@ -51,9 +51,17 @@ export const UserData = () => {
 
   const columns = [
     {
+      title: "id",
+      dataIndex: "id",
+      key: "id",
+      sorter: (a, b) => a.id - b.id,
+      responsive: ["lg"],
+    },
+    {
       title: "Telegram Id",
       dataIndex: "telegram_id",
       key: "telegram_id",
+      sorter: (a, b) => a.telegram_id - b.telegram_id,
       responsive: ["lg"],
     },
     {
@@ -111,7 +119,7 @@ export const UserData = () => {
       responsive: ["lg"],
     },
     {
-      title: "Joined date",
+      title: "Join date",
       dataIndex: "joined_date",
       key: "joined_date",
       sorter: (a, b) => {

@@ -98,4 +98,18 @@ router.post("/joined", async (req, res) => {
   }
 });
 
+
+// Delete user
+router.delete("/", async (req, res) => {
+  try {
+    const query = `DELETE FROM users WHERE id='${req.body.id}'`
+    await client.query(query);
+    res.status(201).json({"message" : `user ${req.body.id} was successfully deleted.`});
+  } catch (err) {
+    res.status(400).json({
+      error: `${err})`,
+    });
+  }
+});
+
 module.exports = router;

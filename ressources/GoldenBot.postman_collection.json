@@ -25,25 +25,6 @@
 			"response": []
 		},
 		{
-			"name": "goldenBot: localhost:5013/messages",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5013/messages",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5013",
-					"path": [
-						"messages"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "goldenbot-cvs.herokuapp.com/users",
 			"request": {
 				"method": "GET",
@@ -64,6 +45,130 @@
 			"response": []
 		},
 		{
+			"name": "goldenBot: localhost:5013/users/meetup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"last_meetup\": \"2021-07-09\",\n    \"id\": 9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5013/users/meetup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"users",
+						"meetup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/users/single",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5013/users/single",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"users",
+						"single"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/users",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 224\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5013/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5013/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "goldenbot-cvs.herokuapp.com/messages",
 			"request": {
 				"method": "GET",
@@ -78,6 +183,95 @@
 					],
 					"path": [
 						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5013/images",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5013/images",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/images/id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2021-07-09\",\n    \"id\": 44,\n    \"user\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5013/images/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"images",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goldenBot: localhost:5013/images/",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"file_path\": \"photos/file_12.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5013/images/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5013",
+					"path": [
+						"images",
+						""
 					]
 				}
 			},
