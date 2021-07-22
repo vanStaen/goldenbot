@@ -111,6 +111,20 @@ export const UserData = () => {
       responsive: ["lg"],
     },
     {
+      title: "Joined date",
+      dataIndex: "joined_date",
+      key: "joined_date",
+      sorter: (a, b) => {
+        if (!a.joined_date) {
+          return +1;
+        }
+        if (!b.joined_date) {
+          return -1;
+        }
+        return a.joined_date.localeCompare(b.joined_date);
+      },
+    },
+    {
       title: "Last activity",
       dataIndex: "last_seen_date",
       key: "last_seen_date",

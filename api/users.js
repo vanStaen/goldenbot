@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     res.status(201).json(user.rows);
   } catch (err) {
     res.status(400).json({
-      error: `${err})`,
+      error: `${err}`,
     });
   }
 });
@@ -35,7 +35,7 @@ router.post("/single", async (req, res) => {
     res.status(201).json(user.rows);
   } catch (err) {
     res.status(400).json({
-      error: `${err})`,
+      error: `${err}`,
     });
   }
 });
@@ -48,7 +48,7 @@ router.post("/meetup", async (req, res) => {
     res.status(201).json({"message" : "Success! Meetup presence has been recorded."});
   } catch (err) {
     res.status(400).json({
-      error: `${err})`,
+      error: `${err}`,
     });
   }
 });
@@ -56,12 +56,18 @@ router.post("/meetup", async (req, res) => {
 // UPDATE user main_image
 router.post("/main_image", async (req, res) => {
   try {
+    const user = await client.query(`SELECT * FROM users WHERE telegram_id='${req.body.telegram_id}'`);
+    if (user.length > 0 ) {
+      res.status(400).json({
+        error: `User already exist in database`,
+      });
+    }
     const query = `UPDATE users SET main_image='${req.body.pic_id}' WHERE telegram_id='${req.body.telegram_id}'`
     await client.query(query);
     res.status(201).json({"message" : "Success! Main image has been updated."});
   } catch (err) {
     res.status(400).json({
-      error: `${err})`,
+      error: `${err}`,
     });
   }
 });
