@@ -49,6 +49,9 @@ def insertImageIndb(author, file_info):
     upload_file_bucket = config("S3_BUCKET_ID")
 
     with open(f"uploads/{file_name}", "rb") as file:
-        s3_client.upload_fileobj(file, upload_file_bucket, file_name)
+        s3_client.upload_fileobj(file,
+                                 upload_file_bucket,
+                                 file_name,
+                                 ExtraArgs={'ACL': 'public-read'})
         print(f"> Photo uploaded to s3")
         os.remove(f"uploads/{file_name}")
