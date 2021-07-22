@@ -5,6 +5,7 @@ import {
   CloseOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
+import { Popconfirm } from "antd";
 
 import { postSingleUserData } from "../../../calls/postSingleUserData";
 import { deleteUserImage } from "../../../calls/deleteUserImage";
@@ -151,15 +152,21 @@ export const GalleryOverlay = (props) => {
           ))}
         <div className="overlay__action">
           <div className="overlay__delete">
-            <DeleteOutlined
-              onClick={() => {
+            <Popconfirm
+              placement="topRight"
+              title={"Are you sure? this will delete the picture FOREVER"}
+              onConfirm={() => {
                 deleteUserImage(props.images[props.selected].file_path);
                 const ArrayImagesNew = props.images;
                 ArrayImagesNew.splice(props.selected, 1);
                 props.setShowOverlay(false);
                 props.setFetchedImages(ArrayImagesNew);
               }}
-            />
+              okText="Delete"
+              cancelText="Cancel"
+            >
+              <DeleteOutlined />
+            </Popconfirm>
           </div>
         </div>
       </div>
