@@ -154,7 +154,7 @@ export const GalleryOverlay = (props) => {
           <div className="overlay__delete">
             <Popconfirm
               placement="topRight"
-              title={"Are you sure? this will delete the picture FOREVER"}
+              title={"Are you sure? This can't be undone."}
               onConfirm={() => {
                 deleteUserImage(props.images[props.selected].file_path);
                 const ArrayImagesNew = props.images;
