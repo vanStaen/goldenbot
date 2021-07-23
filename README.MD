@@ -47,8 +47,6 @@ https://www.freecodecamp.org/news/learn-to-build-your-first-bot-in-telegram-with
 https://www.codementor.io/@karandeepbatra/part-1-how-to-create-a-telegram-bot-in-python-in-under-10-minutes-19yfdv4wrq
 
 
-
-
 ### Research about
 ESbuild -> Webpack
 SWC -> Bable 
