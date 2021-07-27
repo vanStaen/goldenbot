@@ -99,6 +99,7 @@ try:
         customPrint(f"{message}")
         new_chat_member = message.new_chat_member
         new_chat_members = message.new_chat_members
+        left_chat_member = message.left_chat_member
         if new_chat_members:
             customPrint(f"new_chat_members")
             customPrint(f"{new_chat_members}")
@@ -110,6 +111,10 @@ try:
             customPrint(f"{new_chat_member}")
             customPrint(f"> new user added to group: {new_chat_member}")
             insertNewUserIndb(new_chat_member, None, True)
+        if left_chat_member:
+            customPrint(f"left_chat_member")
+            customPrint(f"{left_chat_member}")
+            customPrint(f"> user left the group: {left_chat_member}")
 
 except telebot.apihelper.ApiException as e:
     if e.result.status_code == 403 or e.result.status_code == 400:
