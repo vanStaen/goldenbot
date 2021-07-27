@@ -28,10 +28,11 @@ def updateUserIndb(author, message):
             else:
                 user_activity_incremented = 1
             now = date.today()
-            postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s WHERE telegram_id='%s'"
+            postgreSQL_update_Query = "UPDATE users SET activity=%s, last_seen_date=%s, last_seen_on=%s, last_seen_on_id=%s WHERE telegram_id='%s'"
             cursor.execute(
                 postgreSQL_update_Query,
-                (user_activity_incremented, now, chat_title, author.id),
+                (user_activity_incremented, now, chat_title, message.chat.id,
+                 author.id),
             )
             connection.commit()
 
