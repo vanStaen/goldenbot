@@ -96,7 +96,7 @@ try:
         # update User in db
         updateUserIndb(author, message)
         # Check if there is new members in the chat
-        customPrint(f"{message}")
+        # customPrint(f"{message}")
         new_chat_member = message.new_chat_member
         new_chat_members = message.new_chat_members
         left_chat_member = message.left_chat_member
