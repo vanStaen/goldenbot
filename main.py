@@ -57,20 +57,20 @@ try:
         # update User in db
         updateUserIndb(author, message)
 
-    @bot.message_handler(content_types=["document"])
-    def handle_documents(message):
-        author = message.from_user
-        chat_type = message.chat.type
-        # customPrint(message)
-        customPrint(
-            f"> {author.first_name} send a document to a {chat_type} chat")
-        # Save file_id in bd
-        last_doc_array = len(message.json.get('document')) - 1
-        file_info = bot.get_file(
-            message.json.get('document')[last_doc_array].get('file_id'))
-        insertImageIndb(author, file_info)
-        # update User in db
-        updateUserIndb(author, message)
+    #@bot.message_handler(content_types=["document"])
+    #def handle_documents(message):
+    #    author = message.from_user
+    #    chat_type = message.chat.type
+    #    # customPrint(message)
+    #    customPrint(
+    #        f"> {author.first_name} send a document to a {chat_type} chat")
+    #    # Save file_id in bd
+    #    last_doc_array = len(message.json.get('document')) - 1
+    #    file_info = bot.get_file(
+    #        message.json.get('document')[last_doc_array].get('file_id'))
+    #    insertImageIndb(author, file_info)
+    #    # update User in db
+    #    updateUserIndb(author, message)
 
     ######################################################
     # The bot is listening to messages (direct or group) #
