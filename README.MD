@@ -5,6 +5,10 @@ https://telegram.me/GoldenCircleBerlin_Bot <br/>
 
 The frontend can be accessed at: https://goldenbot-cvs.herokuapp.com/
 
+## Run the bot
+`caffeinate python3 main.py`
+The caffeinate command is used to prevent a Mac from going to sleep.
+
 ## Create/Setup Bot
 Use the Telegram @BotFather to create a new bot. You'll get a Token. 
 Important setting to adjust: `/setPrivacy`> Disable, `/setjoingroups`> Enable.
