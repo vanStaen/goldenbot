@@ -156,7 +156,7 @@ export const GalleryOverlay = (props) => {
               placement="topRight"
               title={"Are you sure? This can't be undone."}
               onConfirm={() => {
-                deleteUserImage(props.images[props.selected].file_path);
+                //deleteUserImage(props.images[props.selected].file_path);
                 const ArrayImagesNew = props.images;
                 ArrayImagesNew.splice(props.selected, 1);
                 props.setShowOverlay(false);
